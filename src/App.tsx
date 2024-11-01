@@ -1,8 +1,14 @@
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import HomePage from "./pages/HomePage/HomePage";
 function App() {
   return (
     <>
-      <h1>demo</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
