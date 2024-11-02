@@ -1,5 +1,4 @@
 import redImage from "../../assets/maleRedShirtModal.png";
-import greenImage from "../../assets/maleGreenShirtModal.png";
 import "./FirstHeroSection.css";
 function FirstHeroSection() {
   return (
