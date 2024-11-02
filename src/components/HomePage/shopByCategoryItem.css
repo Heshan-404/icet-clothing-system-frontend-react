@@ -1,0 +1,25 @@
+.container-category-item {
+  width: 100%;
+}
+
+#category-item-img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.black-line-container {
+  height: 100%;
+}
+.black-line {
+  background-color: rgba(0, 0, 0, 0.695);
+  height: 80px;
+}
+
+.item-name-container {
+  height: 100%;
+}
+
+.item-name-text{
+  font-size: 35px;
+}

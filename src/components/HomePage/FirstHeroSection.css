@@ -1,0 +1,118 @@
+.first-hero-img-one {
+  width: 580px;
+  z-index: 1;
+  transform: matrix(1, 0, 0, 1, -90, 0);
+  -webkit-transform: matrix(1, 0, 0, 1, -90, 0);
+  -moz-transform: matrix(1, 0, 0, 1, -90, 0);
+  -ms-transform: matrix(1, 0, 0, 1, -90, 0);
+  -o-transform: matrix(1, 0, 0, 1, -90, 0);
+}
+.first-hero-img-two {
+  width: 600px;
+  display: none;
+  z-index: 1;
+  transform: matrix(-1, 0, 0, 1, -90, 0);
+  -webkit-transform: matrix(-1, 0, 0, 1, -90, 0);
+  -moz-transform: matrix(-1, 0, 0, 1, -90, 0);
+  -ms-transform: matrix(-1, 0, 0, 1, -90, 0);
+  -o-transform: matrix(-1, 0, 0, 1, -90, 0);
+}
+.hero-first-text {
+  transform: translate(0rem, 4rem);
+  -webkit-transform: translate(0rem, 4rem);
+  -moz-transform: translate(0rem, 4rem);
+  -ms-transform: translate(0rem, 4rem);
+  -o-transform: translate(0rem, 4rem);
+  font-size: 4rem;
+  font-family: "Just Another Hand", cursive;
+}
+
+.hero-second-text {
+  font-size: 9rem;
+  letter-spacing: 10px;
+  text-align: center;
+  line-height: 0.9;
+  font-family: "Mingzat", sans-serif;
+}
+.hero-second-text-container {
+  z-index: -1;
+  position: relative;
+  top: 6rem;
+  width: 900px;
+  transform: translateX(-25%);
+  -webkit-transform: translateX(-25%);
+  -moz-transform: translateX(-25%);
+  -ms-transform: translateX(-25%);
+  -o-transform: translateX(-25%);
+}
+
+@media (max-width: 576px) {
+  .first-hero-img-two {
+    display: none !important;
+  }
+
+  .first-hero-img-one {
+    width: 280px;
+    z-index: 1;
+    transform: matrix(1, 0, 0, 1, -50, 0);
+    -webkit-transform: matrix(1, 0, 0, 1, -50, 0);
+    -moz-transform: matrix(1, 0, 0, 1, -50, 0);
+    -ms-transform: matrix(1, 0, 0, 1, -50, 0);
+    -o-transform: matrix(1, 0, 0, 1, -50, 0);
+  }
+  .hero-first-text {
+    transform: translate(5rem, 1rem);
+    -webkit-transform: translate(5rem, 1rem);
+    -moz-transform: translate(5rem, 1rem);
+    -ms-transform: translate(5rem, 1rem);
+    -o-transform: translate(5rem, 1rem);
+    font-size: 2rem;
+    font-family: "Just Another Hand", cursive;
+}
+  .hero-second-text {
+    font-size: 3rem;
+    letter-spacing: 10px;
+    text-align: center;
+    line-height: 1;
+    font-family: "Mingzat", sans-serif;
+  }
+  .hero-second-text-container {
+    z-index: -1;
+    position: relative;
+    top: 1rem;
+    width: 400px;
+    transform: translateX(-2.5rem);
+    -webkit-transform: translateX(-2.5rem);
+    -moz-transform: translateX(-2.5rem);
+    -ms-transform: translateX(-2.5rem);
+    -o-transform: translateX(-2.5rem);
+}
+}
+/* 
+// Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .first-hero-img-two {
+    display: none !important;
+  }
+}
+/* 
+// Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .first-hero-img-two {
+    display: block !important;
+  }
+}
+/* 
+// X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .first-hero-img-two {
+    display: block !important;
+  }
+}
+/* 
+// XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  .first-hero-img-two {
+    display: block !important;
+  }
+}

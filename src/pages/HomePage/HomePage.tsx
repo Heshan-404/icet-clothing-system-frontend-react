@@ -1,8 +1,13 @@
+import FirstHeroSection from "../../components/HomePage/FirstHeroSection";
+import ShopByCategory from "../../components/HomePage/ShopByCategory";
+import NavigationBar from "../../components/NavigationBar/NavigationBar";
 
 function HomePage() {
   return (
     <div>
-     <button className="btn btn-success"> HOME PAGE </button>
+      <NavigationBar />
+      <FirstHeroSection />
+      <ShopByCategory />
     </div>
   );
 }
