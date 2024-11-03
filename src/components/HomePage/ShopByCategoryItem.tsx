@@ -3,7 +3,7 @@ import "./shopByCategoryItem.css";
 import heightModule from "./constHeight";
 
 function ShopByCategoryItem(props: any) {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const screenWidth= useState(window.innerWidth);
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const link = props.link;

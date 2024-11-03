@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+
+import { useEffect } from "react";
 import redImage from "../../assets/maleRedShirtModal.png";
 import "./FirstHeroSection.css";
 function FirstHeroSection() {
