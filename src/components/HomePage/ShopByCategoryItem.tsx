@@ -6,7 +6,11 @@ function ShopByCategoryItem(props: any) {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
+  const link = props.link;
 
+  function onClickRedirect() {
+    window.location.href = link;
+  }
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
@@ -20,22 +24,27 @@ function ShopByCategoryItem(props: any) {
 
   useEffect(() => {
     if (containerRef.current && imageRef.current) {
-      if (heightModule.getHeight() == "") {
-        heightModule.setHeight(imageRef.current.style.width);
+      const width = containerRef.current.clientWidth;
+
+      if (!heightModule.getHeight()) {
+        heightModule.setHeight(width);
       }
 
-      const width = containerRef.current.clientWidth;
-      containerRef.current.style.height = `${width}px`;
+      const consistentHeight = heightModule.getHeight();
+      containerRef.current.style.height = `${consistentHeight}px`;
       imageRef.current.style.width = `${width}px`;
-      imageRef.current.style.height = `${heightModule.getHeight()}`;
+      imageRef.current.style.height = `${consistentHeight}px`;
       imageRef.current.style.backgroundImage = `url(${props.img})`;
-      containerRef.current.style.height = `${heightModule.getHeight()}`;
-      imageRef.current.style.height = `${heightModule.getHeight()}`;
     }
   }, [screenWidth, props.img]);
 
   return (
-    <div className="">
+    <div
+      className=""
+      onClick={() => {
+        onClickRedirect();
+      }}
+    >
       <div ref={containerRef} className="container-category-item">
         <div ref={imageRef} id="category-item-img">
           <div className="black-line-container d-flex align-items-center justify-content-center">

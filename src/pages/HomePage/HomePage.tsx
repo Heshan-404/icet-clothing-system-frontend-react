@@ -7,7 +7,7 @@ function HomePage() {
     <div>
       <NavigationBar />
       <FirstHeroSection />
-      <ShopByCategory /> 
+      <ShopByCategory />  
     </div>
   );
 }

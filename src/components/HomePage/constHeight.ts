@@ -1,10 +1,10 @@
-let height: string = "";
+let height: number | null = null;
 
-function setHeight(hei: string) {
+export function setHeight(hei: number) {
   height = hei;
 }
 
-function getHeight() {
+export function getHeight() {
   return height;
 }
 

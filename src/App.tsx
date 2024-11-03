@@ -8,15 +8,15 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 
 function App() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000, 
-      once: false,     
-      mirror: true,   
-      offset: 200,     
-    });
-  }, []);
-  
+ useEffect(() => {
+  AOS.init({
+    duration: 1000,  // Animation duration
+    once: false,     // Allow animation to re-trigger when exiting and re-entering
+    mirror: true,    // Reverse animation when scrolling back up
+    offset: 200,     // Adjust the offset as needed
+  });
+}, []);
+
 
   return (
     <>
