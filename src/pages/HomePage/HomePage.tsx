@@ -1,3 +1,5 @@
+ 
+import FooterComponent from "../../components/Footer/FooterComponent";
 import FirstHeroSection from "../../components/HomePage/FirstHeroSection";
 import ShopByCategory from "../../components/HomePage/ShopByCategory";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
@@ -7,7 +9,8 @@ function HomePage() {
     <div>
       <NavigationBar />
       <FirstHeroSection />
-      <ShopByCategory />  
+      <ShopByCategory />    
+      <FooterComponent/>
     </div>
   );
 }

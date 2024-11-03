@@ -1,0 +1,29 @@
+.footer-container {
+  height: fit-content;
+  padding-left: 50px;
+  padding-top: 30px;
+  padding-right: 50px;
+  padding-bottom: 30px;
+}
+
+.email-input-box {
+  width: 300px;
+}
+
+.subscribe-btn-container { 
+}
+
+.subscribe-btn {
+  border: 1px solid white;
+  background-color: black;
+}
+
+.subscribe-btn:hover {
+  background-color: rgb(44, 43, 43); 
+  cursor: pointer;
+}
+
+.subscribe-btn:active{
+    color: black;
+    background-color: white;
+}

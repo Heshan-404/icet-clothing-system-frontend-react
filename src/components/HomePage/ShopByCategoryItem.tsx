@@ -8,19 +8,12 @@ function ShopByCategoryItem(props: any) {
   const imageRef = useRef<HTMLDivElement>(null);
   const link = props.link;
 
-  function onClickRedirect() {
+  const delay = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+  async function onClickRedirect() {
+    await delay(1000);
     window.location.href = link;
   }
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   useEffect(() => {
     if (containerRef.current && imageRef.current) {
@@ -50,7 +43,7 @@ function ShopByCategoryItem(props: any) {
           <div className="black-line-container d-flex align-items-center justify-content-center">
             <div className="black-line w-100">
               <div className="item-name-container d-flex align-items-center justify-content-center">
-                <div className="item-name-text text-white">{props.name}</div>
+                <div className="item-name-text">{props.name}</div>
               </div>
             </div>
           </div>

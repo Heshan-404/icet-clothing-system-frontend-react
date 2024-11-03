@@ -1,6 +1,11 @@
+import { useEffect, useState } from "react";
 import redImage from "../../assets/maleRedShirtModal.png";
 import "./FirstHeroSection.css";
 function FirstHeroSection() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <div className=" mt-5 pt-2 w-100">
