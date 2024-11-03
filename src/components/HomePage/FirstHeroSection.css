@@ -1,118 +1,112 @@
-.first-hero-img-one {
-  width: 580px;
-  z-index: 1;
-  transform: matrix(1, 0, 0, 1, -90, 0);
-  -webkit-transform: matrix(1, 0, 0, 1, -90, 0);
-  -moz-transform: matrix(1, 0, 0, 1, -90, 0);
-  -ms-transform: matrix(1, 0, 0, 1, -90, 0);
-  -o-transform: matrix(1, 0, 0, 1, -90, 0);
-}
-.first-hero-img-two {
-  width: 600px;
-  display: none;
-  z-index: 1;
-  transform: matrix(-1, 0, 0, 1, -90, 0);
-  -webkit-transform: matrix(-1, 0, 0, 1, -90, 0);
-  -moz-transform: matrix(-1, 0, 0, 1, -90, 0);
-  -ms-transform: matrix(-1, 0, 0, 1, -90, 0);
-  -o-transform: matrix(-1, 0, 0, 1, -90, 0);
-}
-.hero-first-text {
-  transform: translate(0rem, 4rem);
-  -webkit-transform: translate(0rem, 4rem);
-  -moz-transform: translate(0rem, 4rem);
-  -ms-transform: translate(0rem, 4rem);
-  -o-transform: translate(0rem, 4rem);
-  font-size: 4rem;
-  font-family: "Just Another Hand", cursive;
+.container-hero-section {
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
-.hero-second-text {
-  font-size: 9rem;
-  letter-spacing: 10px;
-  text-align: center;
-  line-height: 0.9;
-  font-family: "Mingzat", sans-serif;
-}
-.hero-second-text-container {
-  z-index: -1;
+.hero-img-1 {
+  width: 100%;
+  max-width: 620px;
+  height: auto;
   position: relative;
-  top: 6rem;
-  width: 900px;
-  transform: translateX(-25%);
-  -webkit-transform: translateX(-25%);
-  -moz-transform: translateX(-25%);
-  -ms-transform: translateX(-25%);
-  -o-transform: translateX(-25%);
+}
+.hero-img-2 {
+  margin-left: 6.5rem;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  max-width: 620px;
 }
 
-@media (max-width: 576px) {
-  .first-hero-img-two {
-    display: none !important;
-  }
-
-  .first-hero-img-one {
-    width: 280px;
-    z-index: 1;
-    transform: matrix(1, 0, 0, 1, -50, 0);
-    -webkit-transform: matrix(1, 0, 0, 1, -50, 0);
-    -moz-transform: matrix(1, 0, 0, 1, -50, 0);
-    -ms-transform: matrix(1, 0, 0, 1, -50, 0);
-    -o-transform: matrix(1, 0, 0, 1, -50, 0);
-  }
-  .hero-first-text {
-    transform: translate(5rem, 1rem);
-    -webkit-transform: translate(5rem, 1rem);
-    -moz-transform: translate(5rem, 1rem);
-    -ms-transform: translate(5rem, 1rem);
-    -o-transform: translate(5rem, 1rem);
-    font-size: 2rem;
-    font-family: "Just Another Hand", cursive;
+.hero-fisrt-text {
+  font-size: 3rem;
 }
+.hero-second-text {
+  font-size: 7rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: 10px;
+  line-height: 110px;
+}
+.hero-second-row {
+  width: fit-content;
+  text-align: center;
+}
+
+.hero-tittle-container {
+  padding-top: 80px;
+  position: absolute;
+  margin-top: 8rem;
+}
+
+/* #### Mobile Phones Portrait #### */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .hero-img-1 {
+    max-width: 200px;
+    transform: translateX(-30px);
+    -webkit-transform: translateX(-30px);
+    -moz-transform: translateX(-30px);
+    -ms-transform: translateX(-30px);
+    -o-transform: translateX(-30px);
+  }
   .hero-second-text {
-    font-size: 3rem;
-    letter-spacing: 10px;
+    font-size: 2.0rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    letter-spacing: 6px;
+    line-height: 45px;
+  }
+  .hero-tittle-container {
+    top: 6.5rem;
+    padding: 0;
+    display: flex;
+    margin: 0;
+    right: 0;
+    padding-left: 8.2rem;
+  }
+
+  .hero-first-row {
+    width: 100%;
     text-align: center;
-    line-height: 1;
-    font-family: "Mingzat", sans-serif;
   }
-  .hero-second-text-container {
-    z-index: -1;
-    position: relative;
-    top: 1rem;
-    width: 400px;
-    transform: translateX(-2.5rem);
-    -webkit-transform: translateX(-2.5rem);
-    -moz-transform: translateX(-2.5rem);
-    -ms-transform: translateX(-2.5rem);
-    -o-transform: translateX(-2.5rem);
-}
-}
-/* 
-// Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-  .first-hero-img-two {
-    display: none !important;
+  .hero-second-row {
+    width: 100%;
+  }
+  .hero-fisrt-text {
+    font-size: 2rem;
   }
 }
-/* 
-// Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-  .first-hero-img-two {
-    display: block !important;
-  }
+
+/* #### Mobile Phones Landscape #### */
+@media screen and (max-device-width: 640px) and (orientation: landscape) {
+  /* some CSS here */
 }
-/* 
-// X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-  .first-hero-img-two {
-    display: block !important;
-  }
+
+/* #### Mobile Phones Portrait or Landscape #### */
+@media screen and (max-device-width: 640px) {
+  /* some CSS here */
 }
-/* 
-// XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) {
-  .first-hero-img-two {
-    display: block !important;
-  }
+
+/* #### iPhone 4+ Portrait or Landscape #### */
+@media screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* some CSS here */
+}
+
+/* #### iPhone 5 Portrait or Landscape #### */
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* some CSS here */
+}
+
+/* #### iPhone 6 and 6 plus Portrait or Landscape #### */
+@media (min-device-height: 667px) and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3) {
+  /* some CSS here */
+}
+
+/* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* some CSS here */
+}
+
+/* #### Desktops #### */
+@media screen and (min-width: 1024px) {
 }

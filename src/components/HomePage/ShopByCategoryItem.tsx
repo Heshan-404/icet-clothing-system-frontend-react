@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./shopByCategoryItem.css";
+import heightModule from "./constHeight";
 
 function ShopByCategoryItem(props: any) {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -19,11 +20,17 @@ function ShopByCategoryItem(props: any) {
 
   useEffect(() => {
     if (containerRef.current && imageRef.current) {
+      if (heightModule.getHeight() == "") {
+        heightModule.setHeight(imageRef.current.style.width);
+      }
+
       const width = containerRef.current.clientWidth;
       containerRef.current.style.height = `${width}px`;
       imageRef.current.style.width = `${width}px`;
-      imageRef.current.style.height = `${width}px`;
+      imageRef.current.style.height = `${heightModule.getHeight()}`;
       imageRef.current.style.backgroundImage = `url(${props.img})`;
+      containerRef.current.style.height = `${heightModule.getHeight()}`;
+      imageRef.current.style.height = `${heightModule.getHeight()}`;
     }
   }, [screenWidth, props.img]);
 
