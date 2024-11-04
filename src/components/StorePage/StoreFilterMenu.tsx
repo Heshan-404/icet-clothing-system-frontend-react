@@ -7,7 +7,7 @@ export default function StoreFilterMenu() {
   const refFilterPriceDownArrowImg = useRef<HTMLImageElement>(null);
   const refFilterCategoryDownArrowImg = useRef<HTMLImageElement>(null);
   useEffect(() => {});
-  async function clickCatEvent(params: any) {
+  async function clickCatEvent() {
     if (
       refFilterCategoryItems.current &&
       refFilterCategoryDownArrowImg.current
@@ -16,7 +16,7 @@ export default function StoreFilterMenu() {
       refFilterCategoryDownArrowImg.current.style.transform = "scale(1)";
     }
   }
-  function hoverCatEvent(params: any) {
+  function hoverCatEvent() {
     if (
       refFilterCategoryItems.current &&
       refFilterCategoryDownArrowImg.current
@@ -25,26 +25,26 @@ export default function StoreFilterMenu() {
       refFilterCategoryDownArrowImg.current.style.transform = "scale(-1)";
     }
   }
-  function hoverOutCatEvent(params: any) {
+  function hoverOutCatEvent() {
     if (refFilterCategoryItems.current && refFilterCategoryDownArrowImg.current) {
       refFilterCategoryItems.current.style.display = "none";
       refFilterCategoryDownArrowImg.current.style.transform = "scale(1)"
     }
   }
 
-  async function clickPriceEvent(params: any) {
+  async function clickPriceEvent() {
     if (refFilterPriceItems.current && refFilterPriceDownArrowImg.current) {
       refFilterPriceItems.current.style.display = "none";
       refFilterPriceDownArrowImg.current.style.transform = "scale(1)";
     }
   }
-  function hoverPriceEvent(params: any) {
+  function hoverPriceEvent() {
     if (refFilterPriceItems.current && refFilterPriceDownArrowImg.current) {
       refFilterPriceItems.current.style.display = "block";
       refFilterPriceDownArrowImg.current.style.transform = "scale(-1)";
     }
   }
-  function hoverOutPriceEvent(params: any) {
+  function hoverOutPriceEvent() {
     if (refFilterPriceItems.current && refFilterPriceDownArrowImg.current) {
       refFilterPriceItems.current.style.display = "none";
       refFilterPriceDownArrowImg.current.style.transform = "scale(1)"
