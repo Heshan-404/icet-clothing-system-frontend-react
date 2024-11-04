@@ -2,12 +2,6 @@ import StoreFilterMenu from "../../components/StorePage/StoreFilterMenu";
 import StoreItem from "../../components/StorePage/StoreItem";
 
 function StorePage() {
-  const items = [
-    { id: 1, name: "Item 1", desc: "Description 1", price: "$10" },
-    { id: 2, name: "Item 2", desc: "Description 2", price: "$15" },
-    { id: 3, name: "Item 3", desc: "Description 3", price: "$20" },
-    // Add more items as needed
-  ];
 
   return (
     <div className="">
