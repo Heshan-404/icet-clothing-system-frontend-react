@@ -28,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<StorePage />} />
           <Route path="/store" element={<StorePage />} />
+          <Route path="/home" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
     </>
