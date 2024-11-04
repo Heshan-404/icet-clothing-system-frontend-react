@@ -1,0 +1,40 @@
+.filter-drop-down:hover .filter-items {
+  display: block;
+}
+.filter-drop-down:hover .drop-down-arrow {
+  transform: scale(-1);
+  -webkit-transform: scale(-1);
+  -moz-transform: scale(-1);
+  -ms-transform: scale(-1);
+  -o-transform: scale(-1);
+}
+
+.filter-drop-down:hover {
+  cursor: default;
+}
+.filter-items {
+  background-color: white;
+  position: absolute;
+  display: none;
+  width: 300px;
+}
+.filter-item {
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  text-align: start;
+  width: 100%;
+  background-color: white;
+}
+.filter-item:hover {
+  background-color: black;
+  cursor: pointer;
+  color: white;
+}
+.filter-item:active {
+  background-color: white;
+  cursor: pointer;
+  color: black;
+}

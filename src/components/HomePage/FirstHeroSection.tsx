@@ -1,12 +1,6 @@
-
-import { useEffect } from "react";
 import redImage from "../../assets/maleRedShirtModal.png";
 import "./FirstHeroSection.css";
 function FirstHeroSection() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <div className=" mt-5 pt-2 w-100">
@@ -52,11 +46,11 @@ function FirstHeroSection() {
                 </div>
               </div>
             </div>
-            <div className="col d-none d-sm-block pe-5 z-2">
+            <div className="col d-none d-sm-block pe-5 z-2  d-flex text-end">
               <img
                 src={redImage}
                 alt=""
-                className="position-relative hero-img-1 hero-img-2"
+                className="  hero-img-2 "
                 data-aos="fade-left"
                 data-aos-delay="3000"
                 data-aos-offset="0"

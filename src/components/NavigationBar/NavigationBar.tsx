@@ -9,14 +9,29 @@ function NavigationBar() {
             HOME
           </div>
         </div>
-        <div className="col-4  d-flex flex-row justify-content-center gap-5">
-          <div className="text-center nav-bar-middle-btn text-white fs-4 bg-black p-1 ps-3 pe-3 rounded-5">
+        <div className="col-4  d-flex flex-row justify-content-center gap-2">
+          <div
+            className="text-center nav-bar-middle-btn fs-4  p-1 ps-3 pe-3 rounded-5"
+            onClick={() => {
+              window.location.href = "/category/women";
+            }}
+          >
             WOMEN
           </div>
-          <div className="text-center nav-bar-middle-btn text-white fs-4 bg-black p-1 ps-3 pe-3 rounded-5">
+          <div
+            className="text-center nav-bar-middle-btn fs-4  p-1 ps-3 pe-3 rounded-5"
+            onClick={() => {
+              window.location.href = "/category/men";
+            }}
+          >
             MEN
           </div>
-          <div className="text-center nav-bar-middle-btn text-white fs-4 bg-black p-1 ps-3 pe-3 rounded-5">
+          <div
+            className="text-center nav-bar-middle-btn   fs-5  p-1 ps-3 pe-3 rounded-5"
+            onClick={() => {
+              window.location.href = "/category/kids";
+            }}
+          >
             KIDS
           </div>
         </div>
