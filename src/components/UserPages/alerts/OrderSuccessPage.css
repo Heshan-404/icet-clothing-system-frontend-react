@@ -1,0 +1,26 @@
+.order-success-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: #ecebed;
+  animation: fadeIn 1.2s ease forwards, fadeIn 1.2s ease forwards reverse;
+  animation-delay: 0s, 1.2s;
+  animation-fill-mode: forwards;
+}
+
+.success-text {
+  transform: translate(0px, -60px);
+  -webkit-transform: translate(0px, -60px);
+  -moz-transform: translate(0px, -60px);
+  -ms-transform: translate(0px, -60px);
+  -o-transform: translate(0px, -60px);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

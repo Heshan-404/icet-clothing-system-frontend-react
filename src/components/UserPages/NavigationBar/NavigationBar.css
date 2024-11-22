@@ -1,0 +1,38 @@
+.nav-bar-container {
+  background-color: rgba(0, 0, 0, 0.778);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  height: 3.5rem;
+}
+
+.text-nav-shop-tittle {
+  font-family: "Jaini Purva";
+  color: red;
+}
+
+.nav-bar-middle-line-container {
+  height: 100%;
+}
+
+.nav-bar-middle-btn {
+  width: 400px;
+  transition: .5s;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+}
+
+.nav-bar-middle-btn:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.nav-bar-middle-btn {
+  color: white;
+}
+.nv-bar-container{
+  z-index: 2000;
+  position: fixed;
+}

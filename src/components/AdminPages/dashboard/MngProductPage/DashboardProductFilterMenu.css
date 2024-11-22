@@ -1,0 +1,183 @@
+.filter-drop-down:hover .filter-items {
+  display: block;
+}
+.filter-drop-down:hover .drop-down-arrow {
+  transform: scale(-1);
+  -webkit-transform: scale(-1);
+  -moz-transform: scale(-1);
+  -ms-transform: scale(-1);
+  -o-transform: scale(-1);
+}
+
+.filter-drop-down:hover {
+  cursor: default;
+}
+.filter-items {
+  position: absolute;
+  display: none;
+  width: 150px;
+  background-color: rgba(240, 248, 255, 0);
+  z-index: 30;
+}
+.filter-item {
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  text-align: start;
+  width: 100%;
+  background-color: rgba(240, 248, 255, 0);
+  z-index: 30;
+  backdrop-filter: blur(20px);
+  background-color: rgba(251, 246, 246, 0.675);
+}
+.filter-item:hover {
+  background-color: black;
+  cursor: pointer;
+  color: white;
+}
+.filter-item:active {
+  background-color: rgba(240, 248, 255, 0);
+  cursor: pointer;
+  color: black;
+}
+.filter-option-tittle {
+  width: 158px;
+}
+
+.horizontal-line {
+  height: 2px;
+  background-color: black;
+  width: 90%;
+  justify-self: center;
+}
+
+.right-arrow {
+  color: black;
+}
+
+.filter-item:active .right-arrow {
+  color: white;
+}
+.filter-item:hover .right-arrow {
+  color: white;
+}
+.filter-item:hover .right-sub-arrow {
+  color: black;
+}
+.sub-filter-menu-container {
+  transform: translate(130px);
+  -webkit-transform: translate(130px);
+  -moz-transform: translate(130px);
+  -ms-transform: translate(130px);
+  -o-transform: translate(130px);
+  z-index: 5;
+  min-width: 200px;
+  color: black;
+}
+
+.filter-item:hover .sub-filter-menu-container {
+  display: block;
+}
+
+.sub-filter-item:hover .right-sub-arrow {
+  color: white;
+}
+.sub-filter-item {
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.825);
+}
+
+.sub-filter-menu-male {
+  display: none;
+  top: 0;
+  transform: translate(140px, 0px);
+  -webkit-transform: translate(140px, 0px);
+  -moz-transform: translate(140px, 0px);
+  -ms-transform: translate(140px, 0px);
+  -o-transform: translate(140px, 0px);
+}
+
+.male-main-category {
+  backdrop-filter: blur(20px);
+}
+.male-main-category:hover .sub-filter-menu-male {
+  display: block;
+}
+.female-main-category:hover .sub-filter-menu-female {
+  display: block;
+  animation: showIn 0.3s ease forwards;
+  -webkit-animation: showIn 0.3s ease forwards;
+}
+.kids-main-category:hover .sub-filter-menu-kids {
+  display: block;
+  animation: showIn 0.3s ease forwards;
+  -webkit-animation: showIn 0.3s ease forwards;
+}
+
+.sub-filter-menu-female {
+  display: none;
+  top: 0;
+  transform: translate(140px, 0px);
+  -webkit-transform: translate(140px, 0px);
+  -moz-transform: translate(140px, 0px);
+  -ms-transform: translate(140px, 0px);
+  -o-transform: translate(140px, 0px);
+}
+.sub-filter-menu-kids {
+  display: none;
+  top: 0;
+  transform: translate(140px, 0px);
+  -webkit-transform: translate(140px, 0px);
+  -moz-transform: translate(140px, 0px);
+  -ms-transform: translate(140px, 0px);
+  -o-transform: translate(140px, 0px);
+}
+
+.sub-filter-item {
+  opacity: 0;
+  animation: fadeInItem 0.3s ease forwards;
+  -webkit-animation: fadeInItem 0.3s ease forwards;
+}
+
+@keyframes fadeInItem {
+  0% {
+    opacity: 0;
+    transform: translate(20px, 30px);
+    -webkit-transform: translate(20px, 30px);
+    -moz-transform: translate(20px, 30px);
+    -ms-transform: translate(20px, 30px);
+    -o-transform: translate(20px, 30px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateX(20px, 0px);
+    -webkit-transform: translateX(20px, 0px);
+    -moz-transform: translateX(20px, 0px);
+    -ms-transform: translateX(20px, 0px);
+    -o-transform: translateX(20px, 0px);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(20px);
+    -webkit-transform: translate(20px);
+    -moz-transform: translate(20px);
+    -ms-transform: translate(20px);
+    -o-transform: translate(20px);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(20px); 
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px, 0px);
+    -webkit-transform: translateX(0px, 0px);
+    -moz-transform: translateX(0px, 0px);
+    -ms-transform: translateX(0px, 0px);
+    -o-transform: translateX(0px, 0px);
+  }
+}

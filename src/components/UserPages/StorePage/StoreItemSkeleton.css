@@ -1,0 +1,45 @@
+.store-item-skeleton-container {
+  height: 365px;
+  width: 100%;
+  max-width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(220, 220, 220, 1) 25%,
+    rgba(235, 235, 235, 1) 50%,
+    rgba(220, 220, 220, 1) 75%
+  );
+  background-size: 200% 100%; 
+  padding: 16px;
+  animation: shimmer 1.5s infinite;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .store-item-skeleton-container {
+    height: 300px; 
+    padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .store-item-skeleton-container {
+    height: 250px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .store-item-skeleton-container {
+    height: 265px;
+    padding: 8px;
+  }
+}

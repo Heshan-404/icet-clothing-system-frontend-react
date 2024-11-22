@@ -1,0 +1,72 @@
+.cart-item-row-container {
+  height: 100px;
+  padding: 10px;
+}
+
+.cart-item-row-item-img {
+  position: relative;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  background-size: cover;
+  transform: translate(0px, 9px);
+  height: 100%;
+  width: 100%;
+  bottom: 5px;
+}
+.cart-item-row-item-img-container {
+  height: 80px;
+  width: 80px;
+  padding: 5px;
+  background-color: #ededf6;
+}
+
+.cart-item-row-item-data-name {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23px;
+}
+.cart-item-row-item-data-desc {
+  font-weight: 600;
+  line-height: 23px;
+  font-size: 14px;
+  color: #0000005e;
+}
+
+.cart-item-row-item-data-price {
+  font-weight: 700;
+  line-height: 23px;
+  font-size: 14px;
+}
+
+.cart-item-row-item-qty-container {
+  height: 70px;
+}
+
+.qty-change-btn {
+  height: fit-content;
+  width: fit-content;
+  color: black;
+  scale: 0.7;
+  padding: 0;
+}
+.qty-change-btn:hover,
+.item-delete-btn:hover {
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+.item-delete-btn:hover{
+  background-color: red;
+}
+
+.item-delete-btn {
+  color: red;
+  height: fit-content;
+  width: fit-content;
+  border: none;
+  scale: .8;
+  padding: 4px;
+}

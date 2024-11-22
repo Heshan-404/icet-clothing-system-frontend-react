@@ -1,0 +1,21 @@
+.dashboard-container{
+    width: 100vw; 
+}
+
+.dashboard-button{
+    width: 160px;
+    height: 70px;
+    background-color: black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    color: white;
+    font-weight: bolder;
+    border: none;
+}
+.dashboard-button:hover{
+    background-color: rgb(82, 82, 82);
+    color: rgb(0, 0, 0);
+}

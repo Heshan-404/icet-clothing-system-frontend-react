@@ -1,12 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import HomePage from "./pages/HomePage/HomePage";
+import HomePage from "./pages/UserPages/HomePage/HomePage";
 import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import StorePage from "./pages/StorePage/StorePage";
+import StorePage from "./pages/UserPages/StorePage/StorePage";
+import LoginPage from "./pages/UserPages/LoginPage/LoginPage";
+import OrderSuccessAlert from "./components/UserPages/alerts/OrderSuccessAlert";
+import LogOutPage from "./pages/UserPages/LogOutPage/LogOutPage";
+import AdminLogin from "./pages/AdminPages/LoginPage/AdminLogin";
+import DashBoardPage from "./pages/AdminPages/Dashboard/DashBoardPage";
+import MngProductPage from "./pages/AdminPages/Dashboard/MngProductPage/MngProductPage";
 
 function App() {
   useEffect(() => {
@@ -15,8 +21,8 @@ function App() {
       once: false, // Allow animation to re-trigger when exiting and re-entering
       mirror: true, // Reverse animation when scrolling back up
       offset: 200, // Adjust the offset as needed
-    }); 
-     AOS.refresh();
+    });
+    AOS.refresh();
   }, []);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -26,9 +32,26 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<StorePage />} />
-          <Route path="/store" element={<StorePage />} />
+          <Route path="/store" element={<StorePage isProduct={false} />} />
+          <Route path="/store/male" element={<StorePage isProduct={false} />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/user-login" element={<LoginPage />} />
+          <Route path="/user-logout" element={<LogOutPage />} />
+          <Route path="/order-success" element={<OrderSuccessAlert />} />
+          <Route
+            path="/store/product/:productId"
+            element={<StorePage isProduct={true} />}
+          />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<DashBoardPage />} />
+          <Route
+            path="/admin/dashboard/product"
+            element={<MngProductPage isProduct={false} />}
+          />
+          <Route
+            path="/admin/dashboard/product/:productId"
+            element={<MngProductPage isProduct={true} />}
+          />
         </Routes>
       </BrowserRouter>
     </>

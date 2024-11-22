@@ -1,0 +1,31 @@
+.alert-container {
+  width: 200px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgba(255, 166, 0, 1);
+  border: 2px solid black;
+  color: black;
+  animation: animate 3s forwards;
+  -webkit-animation: animate 2s forwards;
+}
+
+@keyframes animate {
+  0% {
+    transform: translate(200px);
+    -webkit-transform: translate(200px);
+    -moz-transform: translate(200px);
+    -ms-transform: translate(200px);
+    -o-transform: translate(200px);
+}
+  50% {
+    transform: translate(0px);
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
