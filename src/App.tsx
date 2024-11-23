@@ -12,7 +12,6 @@ import OrderSuccessAlert from "./components/UserPages/alerts/OrderSuccessAlert";
 import LogOutPage from "./pages/UserPages/LogOutPage/LogOutPage";
 import AdminLogin from "./pages/AdminPages/LoginPage/AdminLogin";
 import DashBoardPage from "./pages/AdminPages/Dashboard/DashBoardPage";
-import StoreItemContainer from "./components/UserPages/StorePage/StoreItemContainer";
 import ProductRegister from "./components/UserPages/StorePage/ProductRegister";
 import MainCategoryPage from "./pages/UserPages/MainCategoryPage/MainCategoryPage";
 

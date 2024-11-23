@@ -15,7 +15,7 @@ function ProductRegister() {
   const [kidsCategoryList, setKidsCategoryList] = useState<Category[]>([]);
   const [femaleCategoryList, setFemaleCategoryList] = useState<Category[]>([]);
   const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
-  const [StockQTY, setStockQTY] = useState<Array<number>>([0, 0, 0, 0, 0, 0]);
+  let StockQTY: Array<number> = [0, 0, 0, 0, 0, 0];
   const [Name, setName] = useState("");
   const [Desc, setDesc] = useState("");
   const [Price, setPrice] = useState(0);
@@ -133,7 +133,7 @@ function ProductRegister() {
                       .post(`/product/image/product/${res.data.id}`, formData, {
                         withCredentials: true,
                       })
-                      .then((response) => {
+                      .then(() => {
                         showAlertMsgDontReload("product added");
                         setTimeout(() => {
                           history.back();

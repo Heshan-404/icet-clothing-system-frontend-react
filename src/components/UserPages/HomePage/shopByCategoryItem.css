@@ -40,14 +40,13 @@
   -o-transition: 0.3s;
 }
 .black-line-container:hover {
-  box-shadow: 0px 0px 15px 2px #0000008b; 
+  box-shadow: 0px 0px 15px 2px #0000008b;
 }
 .black-line {
   background-color: rgba(0, 0, 0, 0.422);
   min-height: 100%;
 }
-.black-line:hover {
-}
+
 .item-name-container {
   height: 100%;
 }

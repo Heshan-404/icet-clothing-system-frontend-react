@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosError, AxiosResponse } from "axios";
+import axios from "axios";
 
 const axiosClient = axios.create({
   baseURL: "http://localhost:8080",

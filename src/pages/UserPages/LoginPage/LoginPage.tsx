@@ -21,7 +21,7 @@ function LoginPage() {
             history.back();
           }
         })
-        .catch((err) => {
+        .catch(() => {
           setError("invalid credentials");
           showAlertInvalid();
         });

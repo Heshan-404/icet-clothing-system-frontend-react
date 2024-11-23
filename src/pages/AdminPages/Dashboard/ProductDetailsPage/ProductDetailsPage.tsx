@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./ProductDetails.css"; 
+import "./ProductDetails.css";
 import axiosClient from "../../../../../axiosConfig";
 import AlertComponent from "../../../../components/UserPages/alerts/AlertComponent";
 
@@ -13,7 +13,7 @@ function ProductDetailsPage(props: { item: Item }) {
   const [isInvalidQty, setIsInvalidQty] = useState(false);
   const [selectedSize, setSelectedSize] = useState<HTMLDivElement | null>(null);
   const [selectedSizeIndex, setSelectedSizeIndex] = useState<number>(-1);
-  const [cartList, setCartList] = useState<CartItem[]>([]); 
+  const [cartList, setCartList] = useState<CartItem[]>([]);
   const [selectedSizeString, setSelectedSizeString] = useState<string | null>(
     null
   );
@@ -58,11 +58,11 @@ function ProductDetailsPage(props: { item: Item }) {
   ) => {
     setQtyCount(0);
     if (selectedSize) {
-      selectedSize.className = "item-size-btn"; 
+      selectedSize.className = "item-size-btn";
     }
     e.currentTarget.className = "selected-size-btn";
     setSelectedSize(e.currentTarget as HTMLDivElement);
-    setSelectedSizeString(size); 
+    setSelectedSizeString(size);
   };
 
   useEffect(() => {
@@ -238,7 +238,9 @@ function ProductDetailsPage(props: { item: Item }) {
                 <tbody>
                   <tr>
                     {sizes.map((size, index) => (
-                      <td key={index}>{props.item?.stockQty?.[index] ?? 0}</td>
+                      <td about={size} key={index}>
+                        {props.item?.stockQty?.[index] ?? 0}
+                      </td>
                     ))}
                   </tr>
                 </tbody>

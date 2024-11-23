@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import FooterComponent from "../Footer/FooterComponent";
 
 export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
-  const [filter, setFilter] = useState("all");
+  const filter = "all/category/2";
   const { productId } = useParams<{ productId: string }>();
   const [item, setItem] = useState<Item>();
   const [maleCategoryList, setMaleCategoryList] = useState<Category[]>([]);
@@ -17,8 +17,6 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const { catId } = useParams();
   const refFilterCategoryItems = useRef<HTMLDivElement>(null);
-  const refFilterPriceItems = useRef<HTMLDivElement>(null);
-  const refFilterPriceDownArrowImg = useRef<HTMLImageElement>(null);
   const refFilterCategoryDownArrowImg = useRef<HTMLImageElement>(null);
   const [role, setRole] = useState<string | null>(null);
 
@@ -70,16 +68,6 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
     }
   }
 
-  useEffect(() => {});
-  async function clickCatEvent() {
-    if (
-      refFilterCategoryItems.current &&
-      refFilterCategoryDownArrowImg.current
-    ) {
-      refFilterCategoryItems.current.style.display = "none";
-      refFilterCategoryDownArrowImg.current.style.transform = "scale(1)";
-    }
-  }
   function hoverCatEvent() {
     if (
       refFilterCategoryItems.current &&
@@ -99,24 +87,6 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
     }
   }
 
-  async function clickPriceEvent() {
-    if (refFilterPriceItems.current && refFilterPriceDownArrowImg.current) {
-      // refFilterPriceItems.current.style.display = "none";
-      refFilterPriceDownArrowImg.current.style.transform = "scale(1)";
-    }
-  }
-  function hoverPriceEvent() {
-    if (refFilterPriceItems.current && refFilterPriceDownArrowImg.current) {
-      refFilterPriceItems.current.style.display = "block";
-      refFilterPriceDownArrowImg.current.style.transform = "scale(-1)";
-    }
-  }
-  function hoverOutPriceEvent() {
-    if (refFilterPriceItems.current && refFilterPriceDownArrowImg.current) {
-      refFilterPriceItems.current.style.display = "none";
-      refFilterPriceDownArrowImg.current.style.transform = "scale(1)";
-    }
-  }
   async function changeLocation(id: number) {
     window.location.href = "/store/category/".concat(id + "");
   }

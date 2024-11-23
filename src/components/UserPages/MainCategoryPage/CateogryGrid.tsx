@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axiosClient from "../../../../axiosConfig";
 import ShopByCategoryItem from "../HomePage/ShopByCategoryItem";
@@ -357,7 +357,7 @@ function CategoryGrid() {
                       {role == "ADMIN" && (
                         <button
                           className="text-white bg-danger border-0 rounded-2 p-2 m-2"
-                          onClick={(e) => {
+                          onClick={() => {
                             setShowCategoryEdit(true);
                             setEditingCategory(category);
                             console.log(editingCategory?.description);

@@ -21,7 +21,7 @@ function AdminLogin() {
             window.location.href = "/admin/dashboard";
           }
         })
-        .catch((err) => {
+        .catch(() => {
           setError("invalid credentials");
           showAlertInvalid();
         });

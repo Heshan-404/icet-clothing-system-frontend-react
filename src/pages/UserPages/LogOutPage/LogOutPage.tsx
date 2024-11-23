@@ -11,7 +11,7 @@ function LogOutPage() {
           withCredentials: true,
         }
       )
-      .then((res) => {
+      .then(() => {
         window.location.href = "/home";
       })
       .catch((error) => {

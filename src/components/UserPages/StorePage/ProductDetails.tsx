@@ -32,8 +32,6 @@ function ProductDetailsPage(props: { item: Item }) {
   const [kidsCategoryList, setKidsCategoryList] = useState<Category[]>([]);
   const [femaleCategoryList, setFemaleCategoryList] = useState<Category[]>([]);
   const refFilterCategoryItems = useRef<HTMLDivElement>(null);
-  const refFilterPriceItems = useRef<HTMLDivElement>(null);
-  const refFilterPriceDownArrowImg = useRef<HTMLImageElement>(null);
   const refFilterCategoryDownArrowImg = useRef<HTMLImageElement>(null);
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [catId, setCatId] = useState(props.item.categoryId);
@@ -216,7 +214,7 @@ function ProductDetailsPage(props: { item: Item }) {
         .delete(`/product/image/${id}`, {
           withCredentials: true,
         })
-        .then((response) => {
+        .then(() => {
           showAlertMsg("Image Deleted");
         })
         .catch((error) => {
@@ -231,13 +229,7 @@ function ProductDetailsPage(props: { item: Item }) {
       window.location.reload();
     }, 2000);
   }
-  async function showAlertMsgDontReload(msg: string) {
-    setAlertMsg(msg);
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 2000);
-  }
+
 
   async function deleteAllImages() {
     axiosClient
@@ -260,7 +252,7 @@ function ProductDetailsPage(props: { item: Item }) {
           .post(`/product/image/product/${props.item.productId}`, formData, {
             withCredentials: true,
           })
-          .then((response) => {
+          .then(() => {
             showAlertMsg("image uploaded");
           })
           .catch((err) => {
@@ -662,7 +654,7 @@ function ProductDetailsPage(props: { item: Item }) {
                   <tbody>
                     <tr>
                       {sizes.map((size, index) => (
-                        <td key={index}>
+                        <td about={size} key={index}>
                           {props.item?.stockQty?.[index] ?? 0}
                         </td>
                       ))}
