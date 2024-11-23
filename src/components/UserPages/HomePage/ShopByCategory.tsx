@@ -5,8 +5,10 @@ import kidsCategoryImg from "../../../assets/kidsCategory.png";
 function ShopByCategory() {
   return (
     <div className="m-5">
-      <div className="row">
-        <h1 className="home-shop-by-cateogry-tittle">SHOP BY CATEGORY</h1>
+      <div className="row text-center">
+        <h1 className="home-shop-by-cateogry-tittle border-top pt-3 pb-3 border-dark-subtle border-5 fs-1 bebas-neue-regular">
+          SHOP BY CATEGORY
+        </h1>
       </div>
       <div className="row mt-3 gap-sm-5 gap-5 gap-md-0">
         <div className="col-sm-12 col-lg-6 col-md-6 col-xl-6 col-xxl-6">

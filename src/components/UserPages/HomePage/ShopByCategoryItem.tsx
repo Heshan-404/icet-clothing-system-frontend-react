@@ -33,22 +33,23 @@ function ShopByCategoryItem(props: any) {
   }, [screenWidth, props.img]);
 
   return (
-    <div
-      className=""
-      onClick={() => {
-        onClickRedirect();
-      }}
-    >
+    <div>
       <div className="ms-0 me-0 ">
-        <div
-          ref={containerRef}
-          className="container-category-item rounded-3 "
-        >
-          <div className="rounded-3 " ref={imageRef} id="category-item-img">
+        <div ref={containerRef} className="container-category-item rounded-3 ">
+          <div
+            className="rounded-3 "
+            ref={imageRef}
+            id="category-item-img"
+            onClick={() => {
+              onClickRedirect();
+            }}
+          >
             <div className="black-line-container rounded-3 d-flex align-items-center justify-content-center">
               <div className="black-line w-100 rounded-3 align-content-center">
                 <div className="item-name-container d-flex align-items-center justify-content-center">
-                  <div className="item-name-text">{props.name}</div>
+                  <div className="item-name-text bebas-neue-regular">
+                    {props.name}
+                  </div>
                 </div>
               </div>
             </div>

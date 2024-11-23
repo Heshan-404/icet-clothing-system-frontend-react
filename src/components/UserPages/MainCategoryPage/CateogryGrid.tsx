@@ -39,6 +39,7 @@ function CategoryGrid() {
     }
     return null;
   }
+
   useEffect(() => {
     if (mainCategory === "women") {
       setMainCategoryFilter("F");
@@ -61,6 +62,7 @@ function CategoryGrid() {
       setRegisterCategoryDesc(editingCategory?.description);
     }
   }, [showCategoryEdit]);
+
   async function fetchCategoriesByMainCategory() {
     await axiosClient
       .get(`/product/category/all/${mainCategoryFilter}`)
@@ -92,6 +94,7 @@ function CategoryGrid() {
       setImageDataArray(images.filter((img) => img !== null));
     }
   }
+
   async function showAlertMsg(msg: string) {
     setAlertMsg(msg);
     setShowAlert(true);
@@ -99,6 +102,7 @@ function CategoryGrid() {
       window.location.reload();
     }, 2000);
   }
+
   async function showAlertMsgDontReload(msg: string) {
     setAlertMsg(msg);
     setShowAlert(true);
@@ -106,6 +110,7 @@ function CategoryGrid() {
       setShowAlert(false);
     }, 2000);
   }
+
   async function updateCategory(category: Category) {
     const form: FormData = new FormData();
 
@@ -173,7 +178,7 @@ function CategoryGrid() {
       {(showCategoryAdd || showCategoryEdit) && (
         <div className="position-fixed w-100 h-100 bg-white p-5 z-3 d-flex justify-content-center">
           <div style={{ width: "300px" }}>
-            <div className="fs-5 fw-bold mb-4 text-black-50">
+            <div className="fs-5 fw-bold mb-4 text-black-50 ">
               Main Category :
               <span className="text-black">{mainCategory?.toUpperCase()}</span>
             </div>
@@ -326,8 +331,8 @@ function CategoryGrid() {
         </div>
       )}
       <div className="mt-5 m-3 pt-3">
-        <div className="d-flex flex-wrap justify-content-between">
-          <h1 className="home-shop-by-cateogry-tittle text-start fs-4">
+        <div className="d-flex flex-wrap justify-content-center">
+          <h1 className="home-shop-by-cateogry-tittle border-bottom border-dark-subtle border-2 fs-1 bebas-neue-regular">
             {mainCategory?.toUpperCase()} Categories
           </h1>
           {role == "ADMIN" && (

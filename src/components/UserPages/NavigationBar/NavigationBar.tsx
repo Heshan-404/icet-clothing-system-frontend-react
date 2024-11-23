@@ -23,13 +23,24 @@ function NavigationBar() {
       <div className="w-100 position-fixed top-0 z-3 nav-bar-container">
         <div className="d-flex align-items-center nav-bar-middle-line-container ms-3 me-3">
           <div className="col-4 ">
-            <div className="nav-bar-home-btn text-white fs-4 d-none d-sm-block">
-              HOME
-            </div>
+            {role != "ADMIN" && (
+              <div className=" fs-4 ">
+                <button
+                  className="btn border-0 p-0 "
+                  onClick={() => {
+                    window.location.href = "/home";
+                  }}
+                >
+                  <span className=" nav-bar-home-btn fs-2  material-symbols-outlined">
+                    home
+                  </span>
+                </button>
+              </div>
+            )}
           </div>
           <div className="col-4  d-flex flex-row justify-content-center gap-2">
             <div
-              className="text-center nav-bar-middle-btn fs-4  p-1 ps-3 pe-3 rounded-5"
+              className="text-center nav-bar-middle-btn fs-4  p-1 ps-3 pe-3 rounded-5 kablammo"
               onClick={() => {
                 window.location.href = "/category/women";
               }}
@@ -37,7 +48,7 @@ function NavigationBar() {
               WOMEN
             </div>
             <div
-              className="text-center nav-bar-middle-btn fs-4  p-1 ps-3 pe-3 rounded-5"
+              className="text-center nav-bar-middle-btn fs-4  p-1 ps-3 pe-3 rounded-5 kablammo"
               onClick={() => {
                 window.location.href = "/category/men";
               }}
@@ -45,7 +56,7 @@ function NavigationBar() {
               MEN
             </div>
             <div
-              className="text-center nav-bar-middle-btn   fs-5  p-1 ps-3 pe-3 rounded-5"
+              className="z-3 text-center nav-bar-middle-btn fs-4  p-1 ps-3 pe-3 rounded-5 kablammo"
               onClick={() => {
                 window.location.href = "/category/kids";
               }}
@@ -54,18 +65,37 @@ function NavigationBar() {
             </div>
             {role == "ADMIN" && (
               <div
-                className="text-center nav-bar-middle-btn bg-white text-black   fs-5  p-1 ps-3 pe-3 rounded-5"
+                className="text-center nav-bar-middle-btn bg-white text-black   fs-5   p-1 ps-3 pe-3 rounded-5"
                 onClick={() => {
                   window.location.href = "/admin/dashboard";
                 }}
               >
-                ADMIN
+                <span className="text-black fs-5 material-symbols-outlined">
+                  admin_panel_settings
+                </span>
               </div>
             )}
           </div>
-          <div className="col-4  text-end">
-            <div className="nav-bar-home-btn text-white fs-4 d-none d-sm-block">
-              <div className="  ">Cloothify</div>
+          <div className="w-100 d-flex justify-content-end z-1">
+            <div className="  text-white  d-flex justify-content-end">
+              <button className="btn border-0 pt-1 p-0"
+              onClick={()=>{
+                if (role) {
+                  window.location.href = "/profile";
+                }else{
+                  window.location.href = "/user-login";
+                }
+              }}
+              >
+                {role && (
+                  <span className="material-symbols-outlined">
+                    account_circle
+                  </span>
+                )}
+                {!role && (
+                  <span className="material-symbols-outlined">login</span>
+                )}
+              </button>
             </div>
           </div>
         </div>

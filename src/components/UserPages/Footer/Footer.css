@@ -29,8 +29,8 @@
 }
 
 .footer-animation {
-  animation: footeranimation 4s ease;
-  -webkit-animation: footeranimation 4s ease;
+  /* animation: footeranimation 4s ease;
+  -webkit-animation: footeranimation 4s ease; */
 }
 
 @keyframes footeranimation {
@@ -42,14 +42,14 @@
     -ms-transform: translate(0px, 500px);
     -o-transform: translate(0px, 500px);
   }
-  80%{
+  80% {
     opacity: 0;
     transform: translate(0px, 100px);
     -webkit-transform: translate(0px, 100px);
     -moz-transform: translate(0px, 100px);
     -ms-transform: translate(0px, 100px);
     -o-transform: translate(0px, 100px);
-}
+  }
   100% {
     transform: translate(0px);
     opacity: 100;
@@ -58,4 +58,16 @@
     -ms-transform: translate(0px);
     -o-transform: translate(0px);
   }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .footer-container {
+    height: fit-content;
+   padding: 50px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
 }

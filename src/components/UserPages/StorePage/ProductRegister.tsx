@@ -4,6 +4,7 @@ import dropDownIcon from "../../../assets/arrow-down.png";
 import "./ProductRegister.css";
 import AlertComponent from "../alerts/AlertComponent";
 import NavigationBar from "../NavigationBar/NavigationBar";
+
 function ProductRegister() {
   const [showAlert, setShowAlert] = useState(false);
   const [alertMsg, setAlertMsg] = useState("");
@@ -15,14 +16,15 @@ function ProductRegister() {
   const [kidsCategoryList, setKidsCategoryList] = useState<Category[]>([]);
   const [femaleCategoryList, setFemaleCategoryList] = useState<Category[]>([]);
   const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
-  let StockQTY: Array<number> = [0, 0, 0, 0, 0, 0];
   const [Name, setName] = useState("");
   const [Desc, setDesc] = useState("");
   const [Price, setPrice] = useState(0);
   const [Discount, setDiscount] = useState(0);
-
   const [imageList, setImageList] = useState<File[]>();
 
+  let StockQTY: Array<number> = [0, 0, 0, 0, 0, 0];
+
+  //show alert and reload window
   async function showAlertMsg(msg: string) {
     setAlertMsg(msg);
     setShowAlert(true);
@@ -30,6 +32,8 @@ function ProductRegister() {
       window.location.reload();
     }, 2000);
   }
+
+  //show alert but not reload
   async function showAlertMsgDontReload(msg: string) {
     setAlertMsg(msg);
     setShowAlert(true);
@@ -38,6 +42,7 @@ function ProductRegister() {
     }, 2000);
   }
 
+  //works when hover on category filter
   function hoverCatEvent() {
     if (
       refFilterCategoryItems.current &&
@@ -47,6 +52,8 @@ function ProductRegister() {
       refFilterCategoryDownArrowImg.current.style.transform = "scale(-1)";
     }
   }
+
+  //works when hover out category filter
   function hoverOutCatEvent() {
     if (
       refFilterCategoryItems.current &&
@@ -56,13 +63,19 @@ function ProductRegister() {
       refFilterCategoryDownArrowImg.current.style.transform = "scale(1)";
     }
   }
+
+  //update selected category
   async function updateCategory(id: number) {
     setCatId(id);
     hoverOutCatEvent();
   }
+
+  //fetch category list after got catid
   useEffect(() => {
     fetchCategoryList();
   }, [catId]);
+
+  //fetch category list
   function fetchCategoryList() {
     axiosClient.get("/product/category/all/F").then((result) => {
       setFemaleCategoryList(result.data);
@@ -85,6 +98,8 @@ function ProductRegister() {
       });
     }
   }
+
+  //register product
   async function registerProduct() {
     if (
       isEmpty(Name) ||
@@ -155,243 +170,253 @@ function ProductRegister() {
   return (
     <div>
       <NavigationBar />
+
       <div className="pro-reg-container mt-5 pt-2">
         {showAlert && <AlertComponent msg={alertMsg} />}
-        <div className="add-product-container ">
-          <div className=" w-100 h-100 bg-white">
-            <div className="container ">
-              <input
-                type="text"
-                className="form-control mt-3"
-                placeholder="Product Name"
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-              />
-              <textarea
-                className="form-control mt-3"
-                placeholder="Product Description"
-                style={{ height: "150px" }}
-                onChange={(e) => {
-                  setDesc(e.target.value);
-                }}
-              />
-              <input
-                type="number"
-                className="form-control mt-3"
-                placeholder="Price"
-                min={0}
-                onKeyDown={(e) => {
-                  if (e.key === "-" || e.key === "." || e.key === "e") {
-                    e.preventDefault();
-                  }
-                }}
-                onChange={(e) => {
-                  setPrice(Number(e.target.value));
-                }}
-              />
-              <input
-                type="number"
-                className="form-control mt-3"
-                placeholder="discount"
-                min={0}
-                onKeyDown={(e) => {
-                  if (e.key === "-" || e.key === "." || e.key === "e") {
-                    e.preventDefault();
-                  }
-                }}
-                onChange={(e) => {
-                  setDiscount(Number(e.target.value));
-                }}
-              />
-            </div>
-            <div>
-              <div className="d-flex flex-wrap justify-content-center mt-3">
-                <div className="d-flex flex-wrap gap-2">
-                  {sizes.map((size, index) => (
-                    <div className="text-center" key={index}>
-                      {size}
-                      <input
-                        type="number"
-                        min={0}
-                        defaultValue={0}
-                        onKeyDown={(e) => {
-                          if (e.key === "-" || e.key === "." || e.key === "e") {
-                            e.preventDefault();
-                          }
+        <div className="d-flex justify-content-center">
+          <div className="add-product-container ">
+            <div className=" w-100 h-100 bg-white">
+              <div className="container ">
+                <input
+                  type="text"
+                  className="form-control mt-3"
+                  placeholder="Product Name"
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+                <textarea
+                  className="form-control mt-3"
+                  placeholder="Product Description"
+                  style={{ height: "150px" }}
+                  onChange={(e) => {
+                    setDesc(e.target.value);
+                  }}
+                />
+                <input
+                  type="number"
+                  className="form-control mt-3"
+                  placeholder="Price"
+                  min={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "-" || e.key === "." || e.key === "e") {
+                      e.preventDefault();
+                    }
+                  }}
+                  onChange={(e) => {
+                    setPrice(Number(e.target.value));
+                  }}
+                />
+                <input
+                  type="number"
+                  className="form-control mt-3"
+                  placeholder="discount"
+                  min={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "-" || e.key === "." || e.key === "e") {
+                      e.preventDefault();
+                    }
+                  }}
+                  onChange={(e) => {
+                    setDiscount(Number(e.target.value));
+                  }}
+                />
+              </div>
+              <div>
+                <div className="d-flex flex-wrap justify-content-center mt-3">
+                  <div className="d-flex flex-wrap gap-2">
+                    {sizes.map((size, index) => (
+                      <div className="text-center" key={index}>
+                        {size}
+                        <input
+                          type="number"
+                          min={0}
+                          defaultValue={0}
+                          onKeyDown={(e) => {
+                            if (
+                              e.key === "-" ||
+                              e.key === "." ||
+                              e.key === "e"
+                            ) {
+                              e.preventDefault();
+                            }
+                          }}
+                          onChange={(e) => {
+                            StockQTY[index] = Number(e.target.value);
+                          }}
+                          className="form-control "
+                          style={{ width: "50px" }}
+                        ></input>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="ms-3">
+                <div className="filter-option-tittle mt-3">
+                  <div className="filter-drop-down   ">
+                    <div className="d-flex">
+                      <div
+                        onMouseOver={hoverCatEvent}
+                        onMouseOut={hoverOutCatEvent}
+                        className="p-1 ps-2 pe-2 border just-another-hand-regular fs-2 ps-3 pe-3"
+                      >
+                        {selectedCategory}
+                        <img
+                          ref={refFilterCategoryDownArrowImg}
+                          src={dropDownIcon}
+                          alt=""
+                          width={"10px"}
+                          className="ms-2 drop-down-arrow "
+                        />
+                      </div>
+                    </div>
+                    <div className="d-flex">
+                      <div
+                        ref={refFilterCategoryItems}
+                        className="filter-items fs-4 just-another-hand-regular"
+                        onMouseOver={hoverCatEvent}
+                        onMouseOut={hoverOutCatEvent}
+                      >
+                        <button className="filter-item border p-1 ps-2 pe-2">
+                          <div className="d-flex align-items-center justify-content-between male-main-category">
+                            MALE
+                            <span className="material-symbols-outlined right-arrow">
+                              chevron_right
+                            </span>
+                          </div>
+                          <div className="position-absolute sub-filter-menu-container top-0 sub-filter-menu-male">
+                            {maleCategoryList.map((maleCategory, index) => (
+                              <div
+                                key={maleCategory.id}
+                                className="filter-item sub-filter-item border p-1 d-flex align-items-center justify-content-between"
+                                onClick={() => {
+                                  updateCategory(maleCategory.id);
+                                }}
+                                style={{ animationDelay: `${index * 0.3}s` }}
+                              >
+                                <div>{maleCategory.name}</div>
+                                <span className="material-symbols-outlined right-sub-arrow">
+                                  chevron_right
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </button>
+                        <button className="filter-item border p-1 ps-2 pe-2 female-main-category">
+                          <div className="d-flex align-items-center justify-content-between">
+                            FEMALE
+                            <span className="material-symbols-outlined right-arrow">
+                              chevron_right
+                            </span>
+                          </div>
+                          <div className="position-absolute sub-filter-menu-container sub-filter-menu-female">
+                            {femaleCategoryList.map((femaleCategory, index) => (
+                              <div
+                                key={index}
+                                className=" filter-item sub-filter-item border p-1 d-flex align-items-center justify-content-between"
+                                onClick={() => {
+                                  updateCategory(femaleCategory.id);
+                                }}
+                                style={{ animationDelay: `${index * 0.3}s` }}
+                              >
+                                <div className="" key={femaleCategory.id}>
+                                  {femaleCategory.name}
+                                </div>
+                                <span className="material-symbols-outlined right-sub-arrow">
+                                  chevron_right
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </button>
+                        <button className="filter-item border p-1 ps-2 pe-2 kids-main-category">
+                          <div className="d-flex align-items-center justify-content-between">
+                            KIDS
+                            <span className="material-symbols-outlined right-arrow">
+                              chevron_right
+                            </span>
+                          </div>
+                          <div className="position-absolute sub-filter-menu-container sub-filter-menu-kids">
+                            {kidsCategoryList.map((kidsCategory, index) => (
+                              <div
+                                key={index}
+                                className=" filter-item sub-filter-item border p-1 d-flex align-items-center justify-content-between"
+                                onClick={() => {
+                                  updateCategory(kidsCategory.id);
+                                }}
+                                style={{ animationDelay: `${index * 0.3}s` }}
+                              >
+                                <div className="" key={kidsCategory.id}>
+                                  {kidsCategory.name}
+                                </div>
+                                <span className="material-symbols-outlined right-sub-arrow">
+                                  chevron_right
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <button className="btn btn-dark ms-3 mt-3">
+                  <label
+                    htmlFor="fileInput"
+                    style={{ cursor: "pointer", padding: "3px" }}
+                    className="d-flex align-items-center"
+                  >
+                    <span className="material-symbols-outlined">image</span>
+                  </label>
+                </button>
+                <input
+                  id="fileInput"
+                  type="file"
+                  accept="image/png, image/jpeg, image/jpg"
+                  style={{ display: "none" }}
+                  multiple
+                  onChange={(e) => {
+                    if (e.target.files) {
+                      setImageList(Array.from(e.target.files));
+                    }
+                  }}
+                />
+              </div>
+              {imageList && (
+                <div className="d-flex flex-wrap mt-3">
+                  {imageList.map((image, index) => (
+                    <div key={index} className="m-2 text-center">
+                      <img
+                        src={URL.createObjectURL(image)} // Generate a preview URL
+                        alt={`Preview ${index}`}
+                        style={{
+                          width: "100px",
+                          height: "100px",
+                          objectFit: "cover",
+                          borderRadius: "5px",
                         }}
-                        onChange={(e) => {
-                          StockQTY[index] = Number(e.target.value);
-                        }}
-                        className="form-control "
-                        style={{ width: "50px" }}
-                      ></input>
+                      />
+                      <p
+                        className="text-muted mt-1"
+                        style={{ fontSize: "12px" }}
+                      >
+                        {image.name}
+                      </p>
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-            <div className="ms-3">
-              <div className="filter-option-tittle mt-3">
-                <div className="filter-drop-down   ">
-                  <div className="d-flex">
-                    <div
-                      onMouseOver={hoverCatEvent}
-                      onMouseOut={hoverOutCatEvent}
-                      className="p-1 ps-2 pe-2 border just-another-hand-regular fs-2 ps-3 pe-3"
-                    >
-                      {selectedCategory}
-                      <img
-                        ref={refFilterCategoryDownArrowImg}
-                        src={dropDownIcon}
-                        alt=""
-                        width={"10px"}
-                        className="ms-2 drop-down-arrow "
-                      />
-                    </div>
-                  </div>
-                  <div className="d-flex">
-                    <div
-                      ref={refFilterCategoryItems}
-                      className="filter-items fs-4 just-another-hand-regular"
-                      onMouseOver={hoverCatEvent}
-                      onMouseOut={hoverOutCatEvent}
-                    >
-                      <button className="filter-item border p-1 ps-2 pe-2">
-                        <div className="d-flex align-items-center justify-content-between male-main-category">
-                          MALE
-                          <span className="material-symbols-outlined right-arrow">
-                            chevron_right
-                          </span>
-                        </div>
-                        <div className="position-absolute sub-filter-menu-container top-0 sub-filter-menu-male">
-                          {maleCategoryList.map((maleCategory, index) => (
-                            <div
-                              key={maleCategory.id}
-                              className="filter-item sub-filter-item border p-1 d-flex align-items-center justify-content-between"
-                              onClick={() => {
-                                updateCategory(maleCategory.id);
-                              }}
-                              style={{ animationDelay: `${index * 0.3}s` }}
-                            >
-                              <div>{maleCategory.name}</div>
-                              <span className="material-symbols-outlined right-sub-arrow">
-                                chevron_right
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </button>
-                      <button className="filter-item border p-1 ps-2 pe-2 female-main-category">
-                        <div className="d-flex align-items-center justify-content-between">
-                          FEMALE
-                          <span className="material-symbols-outlined right-arrow">
-                            chevron_right
-                          </span>
-                        </div>
-                        <div className="position-absolute sub-filter-menu-container sub-filter-menu-female">
-                          {femaleCategoryList.map((femaleCategory, index) => (
-                            <div
-                              key={index}
-                              className=" filter-item sub-filter-item border p-1 d-flex align-items-center justify-content-between"
-                              onClick={() => {
-                                updateCategory(femaleCategory.id);
-                              }}
-                              style={{ animationDelay: `${index * 0.3}s` }}
-                            >
-                              <div className="" key={femaleCategory.id}>
-                                {femaleCategory.name}
-                              </div>
-                              <span className="material-symbols-outlined right-sub-arrow">
-                                chevron_right
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </button>
-                      <button className="filter-item border p-1 ps-2 pe-2 kids-main-category">
-                        <div className="d-flex align-items-center justify-content-between">
-                          KIDS
-                          <span className="material-symbols-outlined right-arrow">
-                            chevron_right
-                          </span>
-                        </div>
-                        <div className="position-absolute sub-filter-menu-container sub-filter-menu-kids">
-                          {kidsCategoryList.map((kidsCategory, index) => (
-                            <div
-                              key={index}
-                              className=" filter-item sub-filter-item border p-1 d-flex align-items-center justify-content-between"
-                              onClick={() => {
-                                updateCategory(kidsCategory.id);
-                              }}
-                              style={{ animationDelay: `${index * 0.3}s` }}
-                            >
-                              <div className="" key={kidsCategory.id}>
-                                {kidsCategory.name}
-                              </div>
-                              <span className="material-symbols-outlined right-sub-arrow">
-                                chevron_right
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <button className="btn btn-dark ms-3 mt-3">
-                <label
-                  htmlFor="fileInput"
-                  style={{ cursor: "pointer", padding: "3px" }}
-                  className="d-flex align-items-center"
+              )}
+              <div className="pb-5 mb-5">
+                <button
+                  className="btn btn-success mt-3 ms-3"
+                  onClick={registerProduct}
                 >
-                  <span className="material-symbols-outlined">image</span>
-                </label>
-              </button>
-              <input
-                id="fileInput"
-                type="file"
-                accept="image/png, image/jpeg, image/jpg"
-                style={{ display: "none" }}
-                multiple
-                onChange={(e) => {
-                  if (e.target.files) {
-                    setImageList(Array.from(e.target.files));
-                  }
-                }}
-              />
-            </div>
-            {imageList && (
-              <div className="d-flex flex-wrap mt-3">
-                {imageList.map((image, index) => (
-                  <div key={index} className="m-2 text-center">
-                    <img
-                      src={URL.createObjectURL(image)} // Generate a preview URL
-                      alt={`Preview ${index}`}
-                      style={{
-                        width: "100px",
-                        height: "100px",
-                        objectFit: "cover",
-                        borderRadius: "5px",
-                      }}
-                    />
-                    <p className="text-muted mt-1" style={{ fontSize: "12px" }}>
-                      {image.name}
-                    </p>
-                  </div>
-                ))}
+                  Create Product
+                </button>
               </div>
-            )}
-            <div className="pb-5 mb-5">
-              <button
-                className="btn btn-success mt-3 ms-3"
-                onClick={registerProduct}
-              >
-                Create Product
-              </button>
             </div>
           </div>
         </div>

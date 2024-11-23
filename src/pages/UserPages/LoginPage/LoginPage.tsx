@@ -7,6 +7,7 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [isInvalid, setIsInvalid] = useState(false);
   const [error, setError] = useState("");
+
   function userLogin(e: any) {
     e.preventDefault();
     if (email == "" || password == "") {
@@ -27,6 +28,27 @@ function LoginPage() {
         });
     }
   }
+  function userSignup(e: any) {
+    e.preventDefault();
+    if (email == "" || password == "") {
+      setError("Fill all fields");
+      showAlertInvalid();
+    } else {
+      const user: User = new User(email, password);
+      axiosClient
+        .post("/user/register-user", user, { withCredentials: true })
+        .then((result) => {
+          if (result.status === 200) {
+            userLogin(e);
+          }
+        })
+        .catch(() => {
+          setError("Invalid Credentials");
+          showAlertInvalid();
+        });
+    }
+  }
+
   function showAlertInvalid() {
     setIsInvalid(true);
     setTimeout(() => setIsInvalid(false), 2000);
@@ -36,7 +58,7 @@ function LoginPage() {
       {isInvalid && <AlertComponent msg={error} />}
 
       <div className="w-100 d-flex justify-content-center mt-5">
-        <form onSubmit={userLogin}>
+        <div>
           <div className="form-group">
             <label form="exampleInputEmail1">Email address</label>
             <input
@@ -75,10 +97,27 @@ function LoginPage() {
               Check me out
             </label>
           </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
+          <div className="w-100 d-flex justify-content-between gap-4 mt-3">
+            <button
+              type="submit"
+              className="w-50 btn btn-primary"
+              onClick={(e) => {
+                userLogin(e);
+              }}
+            >
+              Login
+            </button>
+            <button
+              type="submit"
+              className="w-50 btn btn-dark"
+              onClick={(e) => {
+                userSignup(e);
+              }}
+            >
+              Signup
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

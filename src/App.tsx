@@ -17,11 +17,11 @@ import MainCategoryPage from "./pages/UserPages/MainCategoryPage/MainCategoryPag
 
 function App() {
   useEffect(() => {
-    AOS.init({
-      duration: 10, // Animation duration
+    AOS.init({ // Animation duration
       once: false, // Allow animation to re-trigger when exiting and re-entering
-      mirror: true, // Reverse animation when scrolling back up
-      offset: 200, // Adjust the offset as needed
+      mirror: true,   // Adjust the offset as needed
+      offset: 0,
+      duration: 1000,
     });
     AOS.refresh();
   }, []);
@@ -40,7 +40,7 @@ function App() {
           />
           <Route path="/home" element={<HomePage />} />
           <Route path="/user-login" element={<LoginPage />} />
-          <Route path="/user-logout" element={<LogOutPage />} />
+          <Route path="/profile" element={<LogOutPage />} />
           <Route path="/order-success" element={<OrderSuccessAlert />} />
           <Route
             path="/store/product/:productId"

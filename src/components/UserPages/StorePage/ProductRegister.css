@@ -1,3 +1,7 @@
 .pro-reg-container{
     z-index: 30; 
 }
+
+.add-product-container{
+    width: 350px;
+}

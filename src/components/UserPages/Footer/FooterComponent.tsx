@@ -1,9 +1,5 @@
-
 import "./Footer.css";
 function FooterComponent() {
-   
-   
-
   return (
     <div className="footer-animation">
       {true && (
@@ -37,7 +33,7 @@ function FooterComponent() {
               <div className="mt-1">
                 <div className="subscribe-btn-container d-flex justify-content-start justify-content-sm-start justify-content-md-end">
                   <div className="border-white ">
-                    <div className="subscribe-btn rounded text-center p-1 ps-2 pe-2">
+                    <div className="btn btn-dark mt-2 ps-3 pe-3  text-center p-1 ps-2 pe-2">
                       Subsribe
                     </div>
                   </div>
