@@ -7,6 +7,10 @@
   animation-fill-mode: forwards;
 }
 
+.img-styles{
+  width: 250px;
+  height: auto;
+}
 .success-text {
   transform: translate(0px, -60px);
   -webkit-transform: translate(0px, -60px);

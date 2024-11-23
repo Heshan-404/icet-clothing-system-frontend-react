@@ -141,6 +141,10 @@
   -webkit-animation: fadeInItem 0.3s ease forwards;
 }
 
+.add-product-btn {
+  height: 40px;
+}
+
 @keyframes fadeInItem {
   0% {
     opacity: 0;
@@ -169,7 +173,7 @@
   }
   30% {
     opacity: 1;
-    transform: translate(20px); 
+    transform: translate(20px);
   }
 
   100% {

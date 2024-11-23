@@ -6,20 +6,40 @@ import axiosClient from "../../../../axiosConfig";
 import ProductDetailsPage from "./ProductDetails";
 import { useParams } from "react-router-dom";
 import FooterComponent from "../Footer/FooterComponent";
+
 export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
   const [filter, setFilter] = useState("all");
   const { productId } = useParams<{ productId: string }>();
   const [item, setItem] = useState<Item>();
   const [maleCategoryList, setMaleCategoryList] = useState<Category[]>([]);
-  const [kidsCategoryList, setFemaleCategoryList] = useState<Category[]>([]);
-  const [femaleCategoryList, setKidsCategoryList] = useState<Category[]>([]);
+  const [kidsCategoryList, setKidsCategoryList] = useState<Category[]>([]);
+  const [femaleCategoryList, setFemaleCategoryList] = useState<Category[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+  const { catId } = useParams();
+  const refFilterCategoryItems = useRef<HTMLDivElement>(null);
+  const refFilterPriceItems = useRef<HTMLDivElement>(null);
+  const refFilterPriceDownArrowImg = useRef<HTMLImageElement>(null);
+  const refFilterCategoryDownArrowImg = useRef<HTMLImageElement>(null);
+  const [role, setRole] = useState<string | null>(null);
+
+  useEffect(() => {
+    setRole(getCookieByName("role"));
+  }, [role]);
+  function getCookieByName(name: string) {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+
+      if (cookie.startsWith(`${name}=`)) {
+        return cookie.substring(name.length + 1);
+      }
+    }
+    return null;
+  }
   useEffect(() => {
     if (isProduct && productId) {
       axiosClient.get("/product/".concat(productId)).then((response) => {
         setItem(response.data);
-        if (item && item.productId) {
-          // setFilter(item.categoryId + "");
-        }
       });
     }
   }, []);
@@ -27,7 +47,7 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
     fetchCategoryList();
   }, []);
 
-  async function fetchCategoryList() {
+  function fetchCategoryList() {
     axiosClient.get("/product/category/all/F").then((result) => {
       setFemaleCategoryList(result.data);
     });
@@ -37,13 +57,19 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
     axiosClient.get("/product/category/all/K").then((result) => {
       setKidsCategoryList(result.data);
     });
+    if (catId) {
+      axiosClient.get("/product/category/".concat(catId)).then((res) => {
+        if (res.data.mainCategory == "M") {
+          setSelectedCategory("Male : " + res.data.name);
+        } else if (res.data.mainCategory == "F") {
+          setSelectedCategory("Female : ".concat(res.data.name));
+        } else {
+          setSelectedCategory("Kids : ".concat(res.data.name));
+        }
+      });
+    }
   }
 
-  const refFilterCategoryItems = useRef<HTMLDivElement>(null);
-  const refFilterPriceItems = useRef<HTMLDivElement>(null);
-  const refFilterPriceDownArrowImg = useRef<HTMLImageElement>(null);
-  const refFilterCategoryDownArrowImg = useRef<HTMLImageElement>(null);
-  const [selectedCategoryId, setSelectedCategoryId] = useState();
   useEffect(() => {});
   async function clickCatEvent() {
     if (
@@ -53,7 +79,6 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
       refFilterCategoryItems.current.style.display = "none";
       refFilterCategoryDownArrowImg.current.style.transform = "scale(1)";
     }
-    console.log("asda");
   }
   function hoverCatEvent() {
     if (
@@ -109,7 +134,7 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
                   onMouseOut={hoverOutCatEvent}
                   className="p-1 ps-2 pe-2 border just-another-hand-regular fs-2 ps-3 pe-3"
                 >
-                  All Categories
+                  {selectedCategory}
                   <img
                     ref={refFilterCategoryDownArrowImg}
                     src={dropDownIcon}
@@ -126,6 +151,16 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
                   onMouseOver={hoverCatEvent}
                   onMouseOut={hoverOutCatEvent}
                 >
+                  <button
+                    className="filter-item border p-1 ps-2 pe-2"
+                    onClick={() => {
+                      window.location.href = "/store";
+                    }}
+                  >
+                    <div className="d-flex align-items-center justify-content-between male-main-category">
+                      ALL
+                    </div>
+                  </button>
                   <button className="filter-item border p-1 ps-2 pe-2">
                     <div className="d-flex align-items-center justify-content-between male-main-category">
                       MALE
@@ -188,7 +223,7 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
                     <div className="position-absolute sub-filter-menu-container sub-filter-menu-kids">
                       {kidsCategoryList.map((kidsCategory, index) => (
                         <div
-                        key={index}
+                          key={index}
                           className=" filter-item sub-filter-item border p-1 d-flex align-items-center justify-content-between"
                           onClick={() => {
                             changeLocation(kidsCategory.id);
@@ -210,7 +245,7 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
             </div>
           </div>
         </div>
-        <div className="filter-option-container">
+        {/* <div className="filter-option-container">
           <div className="filter-option-tittle">
             <div className="mingzat-regular mb-1">PRICE RANGE</div>
             <div className="filter-drop-down  ">
@@ -257,8 +292,20 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
+      {role == "ADMIN" && (
+        <div className=" w-100 d-flex align-items-center justify-content-start ps-2 ps-sm-2 ps-md-5 ps-lg-5 pt-3">
+          <button
+            className="btn btn-primary add-product-btn"
+            onClick={() => {
+              window.location.href = "/admin/product/register";
+            }}
+          >
+            New Product
+          </button>
+        </div>
+      )}
       <div>
         {isProduct && item && (
           <>

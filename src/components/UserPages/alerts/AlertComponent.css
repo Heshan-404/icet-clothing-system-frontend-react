@@ -9,6 +9,7 @@
   color: black;
   animation: animate 3s forwards;
   -webkit-animation: animate 2s forwards;
+  z-index: 1000000;
 }
 
 @keyframes animate {

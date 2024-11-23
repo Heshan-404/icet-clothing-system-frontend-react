@@ -9,7 +9,7 @@ function ButtonGrid() {
           <div className=" m-3 ">
             <button
               onClick={() => {
-                window.location.href = "/admin/dashboard/product";
+                window.location.href = "/store";
               }}
               className="dashboard-button p-2"
             >
@@ -35,6 +35,25 @@ function ButtonGrid() {
               }}
             >
               Manage Orders
+            </button>
+          </div>
+          <div className=" m-3 ">
+            <button
+              className="dashboard-button p-2"
+              onClick={() => {
+                window.location.href = "/admin/categories";
+              }}
+            >
+              Manage Categories
+            </button>
+          </div>
+          <div className=" m-3 ">
+            <button
+              className="dashboard-button p-2"
+              onClick={() => {
+                window.location.href = "/admin/dashboard/order";
+              }}
+            > Manage Roles
             </button>
           </div>
         </div>

@@ -12,7 +12,9 @@ import OrderSuccessAlert from "./components/UserPages/alerts/OrderSuccessAlert";
 import LogOutPage from "./pages/UserPages/LogOutPage/LogOutPage";
 import AdminLogin from "./pages/AdminPages/LoginPage/AdminLogin";
 import DashBoardPage from "./pages/AdminPages/Dashboard/DashBoardPage";
-import MngProductPage from "./pages/AdminPages/Dashboard/MngProductPage/MngProductPage";
+import StoreItemContainer from "./components/UserPages/StorePage/StoreItemContainer";
+import ProductRegister from "./components/UserPages/StorePage/ProductRegister";
+import MainCategoryPage from "./pages/UserPages/MainCategoryPage/MainCategoryPage";
 
 function App() {
   useEffect(() => {
@@ -33,7 +35,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/store" element={<StorePage isProduct={false} />} />
-          <Route path="/store/male" element={<StorePage isProduct={false} />} />
+          <Route
+            path="/store/category/:catId"
+            element={<StorePage isProduct={false} />}
+          />
           <Route path="/home" element={<HomePage />} />
           <Route path="/user-login" element={<LoginPage />} />
           <Route path="/user-logout" element={<LogOutPage />} />
@@ -44,13 +49,10 @@ function App() {
           />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<DashBoardPage />} />
+          <Route path="/admin/product/register" element={<ProductRegister />} />
           <Route
-            path="/admin/dashboard/product"
-            element={<MngProductPage isProduct={false} />}
-          />
-          <Route
-            path="/admin/dashboard/product/:productId"
-            element={<MngProductPage isProduct={true} />}
+            path="/category/:mainCategory"
+            element={<MainCategoryPage />}
           />
         </Routes>
       </BrowserRouter>

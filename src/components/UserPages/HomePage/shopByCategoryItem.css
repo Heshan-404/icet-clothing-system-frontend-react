@@ -9,17 +9,17 @@
 
 .container-category-item:hover {
   cursor: pointer;
-  scale: 1.01;
+  scale: 1.004;
 }
 #category-item-img {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  transition: filter .7s;
-  -webkit-transition: filter .7s;
-  -moz-transition: filter .7s;
-  -ms-transition: filter .7s;
-  -o-transition: filter .7s;
+  transition: filter 0.7s;
+  -webkit-transition: filter 0.7s;
+  -moz-transition: filter 0.7s;
+  -ms-transition: filter 0.7s;
+  -o-transition: filter 0.7s;
 }
 #category-item-img:hover {
   filter: grayscale(1);
@@ -33,12 +33,21 @@
 
 .black-line-container {
   height: 100%;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+.black-line-container:hover {
+  box-shadow: 0px 0px 15px 2px #0000008b; 
 }
 .black-line {
-  background-color: rgba(0, 0, 0, 0.695);
-  height: 80px;
+  background-color: rgba(0, 0, 0, 0.422);
+  min-height: 100%;
 }
-
+.black-line:hover {
+}
 .item-name-container {
   height: 100%;
 }

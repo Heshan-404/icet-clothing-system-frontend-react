@@ -3,7 +3,7 @@ import "./shopByCategoryItem.css";
 import heightModule from "./constHeight";
 
 function ShopByCategoryItem(props: any) {
-  const screenWidth= useState(window.innerWidth);
+  const screenWidth = useState(window.innerWidth);
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const link = props.link;
@@ -12,6 +12,7 @@ function ShopByCategoryItem(props: any) {
     new Promise((resolve) => setTimeout(resolve, ms));
   async function onClickRedirect() {
     await delay(1000);
+    console.log(link);
     window.location.href = link;
   }
 
@@ -38,12 +39,17 @@ function ShopByCategoryItem(props: any) {
         onClickRedirect();
       }}
     >
-      <div ref={containerRef} className="container-category-item">
-        <div ref={imageRef} id="category-item-img">
-          <div className="black-line-container d-flex align-items-center justify-content-center">
-            <div className="black-line w-100">
-              <div className="item-name-container d-flex align-items-center justify-content-center">
-                <div className="item-name-text">{props.name}</div>
+      <div className="ms-0 me-0 ">
+        <div
+          ref={containerRef}
+          className="container-category-item rounded-3 "
+        >
+          <div className="rounded-3 " ref={imageRef} id="category-item-img">
+            <div className="black-line-container rounded-3 d-flex align-items-center justify-content-center">
+              <div className="black-line w-100 rounded-3 align-content-center">
+                <div className="item-name-container d-flex align-items-center justify-content-center">
+                  <div className="item-name-text">{props.name}</div>
+                </div>
               </div>
             </div>
           </div>

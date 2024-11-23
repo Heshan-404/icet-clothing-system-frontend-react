@@ -18,11 +18,6 @@ function StoreItem({ product }: { product: Item }) {
         .then((result) => {
           setImageData(result.data.data);
         });
-      const imageBase64 = `data:image/png;base64,${imageData}`;
-      const imgElement = document.getElementById("store-item-img");
-      if (imgElement) {
-        imgElement.style.backgroundImage = `url(${imageBase64})`;
-      }
     }
   }, [imageData]);
 
@@ -41,19 +36,21 @@ function StoreItem({ product }: { product: Item }) {
           ref={storeImgContainerRef}
           style={{ height: `${height}px` }} // Apply height with px unit
         >
-          <div
+          <img
             id="store-item-img"
             className="store-item-img"
-            ref={storeImgContainerRef}
-          ></div>
+            src={`data:image/png;base64,${imageData}`}
+          />
         </div>
         <div className="mt-3 mingzat-regular fw-bolder fs-5">
           {product.productName}
         </div>
         <div className="store-item-description mingzat-regular">
-          {product.description}dsfdsfds dsfdsd dsfds
+          {product.description}
         </div>
-        <div className="mt-1 mingzat-regular fw-bold">LKR : {product.price}.00</div>
+        <div className="mt-1 mingzat-regular fw-bold">
+          LKR : {product.price}.00
+        </div>
       </div>
     </div>
   );
