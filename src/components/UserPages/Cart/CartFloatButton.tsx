@@ -9,6 +9,8 @@ function CartFloatButton() {
   const [isCartIconVisible, setIsCartIconVisible] = useState(false);
   const [cartList, setCartList] = useState<CartItem[]>([]);
   const [totalItemPrice, setTotalItemPrice] = useState(0);
+  const [isOrderPlacing, setIsOrderPlacing] = useState(false);
+
   useEffect(() => {
     setTotalItemPrice(0);
     setCartList(JSON.parse(localStorage.getItem("cartItemList") || "[]"));
@@ -27,10 +29,11 @@ function CartFloatButton() {
   }
 
   function checkOutProcess() {
-    if (cartList.length < 0) { 
+    if (cartList.length < 0) {
     } else {
+      setIsOrderPlacing(true);
       const orderItems: OrderItem[] = [];
-      cartList.forEach((item) => { 
+      cartList.forEach((item) => {
         const product: Product = new Product(item.productId);
         const orderItem: OrderItem = new OrderItem(
           item.sizeId,
@@ -46,11 +49,13 @@ function CartFloatButton() {
           .post("/order", cartResult, { withCredentials: true })
           .then((response) => {
             if (response.status === 200) {
+              setIsOrderPlacing(false);
               localStorage.removeItem("cartItemList");
               window.location.href = "/order-success";
             }
           })
           .catch(() => {
+            setIsOrderPlacing(false);
             location.href = "/user-login";
           });
       }
@@ -109,7 +114,16 @@ function CartFloatButton() {
                     className="mb-3 p-2 bg-black text-white rounded-5"
                     onClick={checkOutProcess}
                   >
-                    Checkout
+                    {!isOrderPlacing && <div>Checkout</div>}
+                    {isOrderPlacing && (
+                      <div>
+                        <span
+                          className="spinner-border spinner-border-sm"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                      </div>
+                    )}
                   </button>
                 </div>
               </div>

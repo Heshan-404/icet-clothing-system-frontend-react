@@ -3,7 +3,7 @@ function FooterComponent() {
   return (
     <div className="footer-animation">
       {true && (
-        <div className="footer-container start-0 bottom-0 w-100 bg-black">
+        <div className="footer-container start-0 bottom-0 w-100 bg-black mt-5">
           <div className="row">
             <div className="text-white jaini-purva-regular fs-3">Cloothify</div>
           </div>

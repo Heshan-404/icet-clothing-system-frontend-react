@@ -23,20 +23,18 @@ function NavigationBar() {
       <div className="w-100 position-fixed top-0 z-3 nav-bar-container">
         <div className="d-flex align-items-center nav-bar-middle-line-container ms-3 me-3">
           <div className="col-4 ">
-            {role != "ADMIN" && (
-              <div className=" fs-4 ">
-                <button
-                  className="btn border-0 p-0 "
-                  onClick={() => {
-                    window.location.href = "/home";
-                  }}
-                >
-                  <span className=" nav-bar-home-btn fs-2  material-symbols-outlined">
-                    home
-                  </span>
-                </button>
-              </div>
-            )}
+            <div className=" fs-4 ">
+              <button
+                className="btn border-0 p-0 "
+                onClick={() => {
+                  window.location.href = "/home";
+                }}
+              >
+                <span className=" nav-bar-home-btn fs-2  material-symbols-outlined">
+                  home
+                </span>
+              </button>
+            </div>
           </div>
           <div className="col-4  d-flex flex-row justify-content-center gap-2">
             <div
@@ -63,29 +61,18 @@ function NavigationBar() {
             >
               KIDS
             </div>
-            {role == "ADMIN" && (
-              <div
-                className="text-center nav-bar-middle-btn bg-white text-black   fs-5   p-1 ps-3 pe-3 rounded-5"
-                onClick={() => {
-                  window.location.href = "/admin/dashboard";
-                }}
-              >
-                <span className="text-black fs-5 material-symbols-outlined">
-                  admin_panel_settings
-                </span>
-              </div>
-            )}
           </div>
           <div className="w-100 d-flex justify-content-end z-1">
             <div className="  text-white  d-flex justify-content-end">
-              <button className="btn border-0 pt-1 p-0"
-              onClick={()=>{
-                if (role) {
-                  window.location.href = "/profile";
-                }else{
-                  window.location.href = "/user-login";
-                }
-              }}
+              <button
+                className="btn border-0 pt-1 p-0"
+                onClick={() => {
+                  if (role) {
+                    window.location.href = "/profile";
+                  } else {
+                    window.location.href = "/user-login";
+                  }
+                }}
               >
                 {role && (
                   <span className="material-symbols-outlined">
@@ -100,6 +87,20 @@ function NavigationBar() {
           </div>
         </div>
       </div>
+      {role == "ADMIN" && (
+        <div
+          className=" text-black m-3 position-fixed  bottom-0 end-0 m-0 border-0 btn btn-dark d-flex align-items-center p-3 rounded-5"
+          onClick={() => {
+            window.location.href = "/admin/dashboard";
+          }}
+        >
+          <div className="h-100 d-flex align-items-center">
+            <span className=" material-symbols-outlined">
+              admin_panel_settings
+            </span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

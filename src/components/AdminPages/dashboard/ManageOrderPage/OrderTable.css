@@ -1,0 +1,18 @@
+td {
+  white-space: nowrap; /* Prevents line breaks inside the cell */
+  overflow: hidden; /* Hides overflowed text */
+  text-overflow: ellipsis; /* Adds '...' for overflow text */
+}
+
+/* styles.css or in your component's style */
+.pending {
+  background-color: yellow;
+}
+
+.shipped {
+  background-color: green;
+}
+
+.cancelled {
+  background-color: red;
+}

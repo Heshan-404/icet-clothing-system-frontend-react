@@ -30,12 +30,12 @@ function FirstHeroSection() {
               </div>
             </div>
             <div className="col d-none d-sm-block pe-5 z-2 d-flex text-end">
-              <img
+              {/* <img
                 src={redImage}
                 alt=""
                 className="position-relative hero-img-1 z-1 d-none d-sm-block fade-left"
    
-              />
+              /> */}
             </div>
           </div>
         </div>

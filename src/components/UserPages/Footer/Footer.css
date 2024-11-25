@@ -3,7 +3,7 @@
   padding-left: 50px;
   padding-top: 30px;
   padding-right: 50px;
-  padding-bottom: 30px;
+  padding-bottom: 30px; 
 }
 
 .email-input-box {
@@ -35,28 +35,13 @@
 
 @keyframes footeranimation {
   0% {
-    opacity: 0;
-    transform: translate(0px, 500px);
-    -webkit-transform: translate(0px, 500px);
-    -moz-transform: translate(0px, 500px);
-    -ms-transform: translate(0px, 500px);
-    -o-transform: translate(0px, 500px);
+    opacity: 0; 
   }
   80% {
-    opacity: 0;
-    transform: translate(0px, 100px);
-    -webkit-transform: translate(0px, 100px);
-    -moz-transform: translate(0px, 100px);
-    -ms-transform: translate(0px, 100px);
-    -o-transform: translate(0px, 100px);
+    opacity: 0; 
   }
-  100% {
-    transform: translate(0px);
+  100% { 
     opacity: 100;
-    -webkit-transform: translate(0px);
-    -moz-transform: translate(0px);
-    -ms-transform: translate(0px);
-    -o-transform: translate(0px);
   }
 }
 

@@ -6,11 +6,12 @@ import axiosClient from "../../../../axiosConfig";
 import ProductDetailsPage from "./ProductDetails";
 import { useParams } from "react-router-dom";
 import FooterComponent from "../Footer/FooterComponent";
+import DelayContainer from "../../DelayContainer";
 
 export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
-  const filter = "all/category/2";
+  const [filter, setFilter] = useState("all");
   const { productId } = useParams<{ productId: string }>();
-  const [item, setItem] = useState<Item>();
+  const [item, setItem] = useState<Item | null>(null);
   const [maleCategoryList, setMaleCategoryList] = useState<Category[]>([]);
   const [kidsCategoryList, setKidsCategoryList] = useState<Category[]>([]);
   const [femaleCategoryList, setFemaleCategoryList] = useState<Category[]>([]);
@@ -23,6 +24,7 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
   useEffect(() => {
     setRole(getCookieByName("role"));
   }, [role]);
+
   function getCookieByName(name: string) {
     const cookies = document.cookie.split(";");
     for (let i = 0; i < cookies.length; i++) {
@@ -44,6 +46,13 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
   useEffect(() => {
     fetchCategoryList();
   }, []);
+
+  useEffect(() => {
+    if (item) {
+      console.log(item.categoryId);
+      setFilter("all/category".concat(item.categoryId + ``));
+    }
+  }, [item]);
 
   function fetchCategoryList() {
     axiosClient.get("/product/category/all/F").then((result) => {
@@ -93,6 +102,11 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
 
   return (
     <div>
+      {!item && productId && (
+        <div>
+          <DelayContainer />
+        </div>
+      )}
       <div className="d-flex gap-3 ms-2 ms-sm-2 ms-md-5 ms-lg-5 ms-xl-5 ms-xxl-5 mt-3">
         <div className="filter-option-container">
           <div className="filter-option-tittle ">
@@ -285,7 +299,11 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
         )}
       </div>
       <div>
-        {isProduct && item && <StoreItemContainer filter={filter} />}
+        {isProduct && item && (
+          <StoreItemContainer
+            filter={"all/category/".concat(item.categoryId + "")}
+          />
+        )}
         {!isProduct && <StoreItemContainer filter="all" />}
       </div>
       <FooterComponent />

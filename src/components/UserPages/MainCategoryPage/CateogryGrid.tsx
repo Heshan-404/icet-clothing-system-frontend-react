@@ -4,6 +4,7 @@ import axiosClient from "../../../../axiosConfig";
 import ShopByCategoryItem from "../HomePage/ShopByCategoryItem";
 import femaleCategoryImg from "../../../assets/kidsCategory.png";
 import AlertComponent from "../alerts/AlertComponent";
+import DelayContainer from "../../DelayContainer";
 
 function CategoryGrid() {
   const [mainCategoryFilter, setMainCategoryFilter] = useState<string | null>(
@@ -12,7 +13,7 @@ function CategoryGrid() {
   const [categoryDetails, setCategoryDetails] =
     useState<Array<Category> | null>();
   const { mainCategory } = useParams();
-  const [imageDataArray, setImageDataArray] = useState<String[]>([]);
+  const [imageDataArray, setImageDataArray] = useState<String[] | null>(null);
   const [showLoader, setShowLoader] = useState(true);
   const [role, setRole] = useState<string | null>(null);
   const [showCategoryAdd, setShowCategoryAdd] = useState(false);
@@ -86,7 +87,7 @@ function CategoryGrid() {
       const images = await Promise.all(
         categoryDetails.map((category) =>
           axiosClient
-            .get(`/product/image/${category.id}`)
+            .get(`/product/image/${category.imageId}`)
             .then((res) => (res.status === 200 ? res.data.data : null))
             .catch(() => null)
         )
@@ -114,8 +115,6 @@ function CategoryGrid() {
   async function updateCategory(category: Category) {
     const form: FormData = new FormData();
 
-    console.log(registerCategoryImage);
-    console.log(category);
 
     form.append("category", JSON.stringify(category));
     if (registerCategoryImage) {
@@ -170,6 +169,12 @@ function CategoryGrid() {
 
   return (
     <div>
+      {!imageDataArray && (
+        <div>
+          <DelayContainer />
+        </div>
+      )}
+
       {showAlert && (
         <div>
           <AlertComponent msg={alertMsg} />
@@ -319,26 +324,17 @@ function CategoryGrid() {
           </div>
         </div>
       )}
-      {showLoader && (
-        <div className="loader-style w-100 h-100 d-flex justify-content-center align-items-center position-absolute pb-5">
-          <div
-            className="spinner-grow"
-            style={{ width: "3rem", height: "3rem" }}
-            role="status"
-          >
-            <span className="sr-only"> </span>
-          </div>
-        </div>
-      )}
-      <div className="mt-5 m-3 pt-3">
+
+      <div className="mt-5 m-3 pt-4">
         <div className="d-flex flex-wrap justify-content-center">
           <h1 className="home-shop-by-cateogry-tittle border-bottom border-dark-subtle border-2 fs-1 bebas-neue-regular">
             {mainCategory?.toUpperCase()} Categories
           </h1>
+
           {role == "ADMIN" && (
             <div className="">
               <button
-                className="btn btn-success"
+                className="btn btn-success ms-4"
                 onClick={() => {
                   setShowCategoryAdd(true);
                 }}
@@ -348,9 +344,12 @@ function CategoryGrid() {
             </div>
           )}
         </div>
+        {imageDataArray?.length == 0 && (
+          <div className="" style={{ height: "60vh" }}></div>
+        )}
         <div className="row mt-3 m-3 gap-sm-5 gap-5 gap-md-0">
           {categoryDetails &&
-            imageDataArray.length === categoryDetails.length &&
+            imageDataArray &&
             categoryDetails.map((category, index) => (
               <div
                 key={index}
@@ -376,11 +375,7 @@ function CategoryGrid() {
                     </div>
                   </div>
                   <ShopByCategoryItem
-                    img={
-                      imageDataArray[index]
-                        ? `data:image/png;base64,${imageDataArray[index]}`
-                        : femaleCategoryImg
-                    }
+                    img={`data:image/png;base64,${imageDataArray[index]}`}
                     name={category.name}
                     link={"/store/category/".concat(category.id + "")}
                   />

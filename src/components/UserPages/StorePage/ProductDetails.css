@@ -6,8 +6,8 @@
 }
 #item-small-img-1,
 #item-small-img-2 {
-  height: 100%;
-  width: auto;
+  height: 70px; 
+  width: 70px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -20,11 +20,11 @@
 }
 .small-img-container {
   background-color: #ededf6;
-  height: 500px;
+  height: 400px;
   width: 400px;
 }
 .small-images-conatiner {
-  width: 200px;
+  width: 70px;
 }
 .moving-arrow {
   transition: 0.3s;
@@ -211,7 +211,7 @@
 
 @media (max-width: 480px) {
   .small-images-conatiner {
-    width: 100px;
+    width: 70px;
   }
 
   .main-img-container {

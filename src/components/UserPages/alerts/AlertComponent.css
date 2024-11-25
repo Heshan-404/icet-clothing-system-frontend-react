@@ -1,11 +1,5 @@
 .alert-container {
-  width: 200px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: rgba(255, 166, 0, 1);
-  border: 2px solid black;
+  width: 200px; 
   color: black;
   animation: animate 3s forwards;
   -webkit-animation: animate 2s forwards;
@@ -23,7 +17,7 @@
   50% {
     transform: translate(0px);
   }
-  50% {
+  65% {
     opacity: 100%;
   }
   100% {

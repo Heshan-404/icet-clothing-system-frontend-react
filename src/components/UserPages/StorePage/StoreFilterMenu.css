@@ -19,6 +19,7 @@
   background-color: rgba(240, 248, 255, 0);
   z-index: 30;
 }
+ 
 .filter-item {
   transition: 0.5s;
   -webkit-transition: 0.5s;
@@ -43,7 +44,7 @@
   color: black;
 }
 .filter-option-tittle {
-  width: 158px;
+  width:fit-content;
 }
 
 .horizontal-line {

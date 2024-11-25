@@ -35,10 +35,12 @@ function ProductDetailsPage(props: { item: Item }) {
   const refFilterCategoryDownArrowImg = useRef<HTMLImageElement>(null);
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [catId, setCatId] = useState(props.item.categoryId);
+  const [height, setHeight] = useState<number>();
 
   useEffect(() => {
     setRole(getCookieByName("role"));
   }, [role]);
+
   function getCookieByName(name: string) {
     const cookies = document.cookie.split(";");
     for (let i = 0; i < cookies.length; i++) {
@@ -51,6 +53,13 @@ function ProductDetailsPage(props: { item: Item }) {
     return null;
   }
 
+  useEffect(() => {
+    const imgOneElement = document.getElementById("item-small-img-1");
+
+    if (imgOneElement) {
+      setHeight(imgOneElement.offsetWidth);
+    }
+  }, []);
   fetchMainImage();
 
   useEffect(() => {
@@ -60,11 +69,15 @@ function ProductDetailsPage(props: { item: Item }) {
     setNewPrice(props.item.price);
     setNewStockQTY(props.item.stockQty);
   }, [props.item]);
+
   useEffect(() => {
-    checkItemAlreadyInCart();
     setCartList(JSON.parse(localStorage.getItem("cartItemList") || "[]"));
     window.scrollTo(0, 0);
   }, [props.item]);
+
+  useEffect(() => {
+    checkItemAlreadyInCart();
+  }, [cartList]);
 
   async function checkItemAlreadyInCart() {
     cartList.forEach((cartItem) => {
@@ -230,7 +243,6 @@ function ProductDetailsPage(props: { item: Item }) {
     }, 2000);
   }
 
-
   async function deleteAllImages() {
     axiosClient
       .delete("/product/image/product/".concat(props.item.productId + ""), {
@@ -325,6 +337,7 @@ function ProductDetailsPage(props: { item: Item }) {
   useEffect(() => {
     fetchCategoryList();
   }, [catId]);
+
   function fetchCategoryList() {
     axiosClient.get("/product/category/all/F").then((result) => {
       setFemaleCategoryList(result.data);
@@ -373,7 +386,7 @@ function ProductDetailsPage(props: { item: Item }) {
       {isInvalidQty && <AlertComponent msg="Invalid Quantity" />}
 
       <div className="ps-4 ps-md-5 ps-sm-4 ps-lg-5 product-details-container ps-2 pe-2 pt-4 ps-sm-2 pe-sm-2 ps-md-5 pe-md-5 d-flex flex-rows gap-3 gap-md-5 gap-lg-5 gap-sm-3 flex-wrap justify-content-start">
-        <div className="main-img-container pt-4">
+        <div className="main-img-container ">
           <div className="item-main-img" id="item-main-img">
             {role == "ADMIN" && (
               <div className="">
@@ -394,7 +407,7 @@ function ProductDetailsPage(props: { item: Item }) {
         </div>
         <div className="d-flex flex-column small-images-conatiner gap-3">
           <div
-            className="text-center moving-arrow fw-bold border-0  text-center"
+            className="text-center moving-arrow fw-bold border-0 "
             onClick={moveImageDown}
           >
             <button className="material-symbols-outlined text-black arrow-btn arrow-btn-up">
@@ -404,6 +417,7 @@ function ProductDetailsPage(props: { item: Item }) {
           <div
             style={{
               backgroundImage: `url(data:image/png;base64,${imageDataArray[imageIndex]})`,
+              height: `${height}`,
             }}
             id="item-small-img-1"
             className="small-img-container"
@@ -488,11 +502,11 @@ function ProductDetailsPage(props: { item: Item }) {
               </div>
               <div>
                 <button
-                  className="btn btn-danger p-2 align-items-center d-flex"
+                  disabled
+                  className="btn btn-dark p-2 align-items-center d-flex"
                   onClick={deleteProductById}
                 >
-                  <span className="material-symbols-outlined pe-2">delete</span>
-                  Product
+                  Hide
                 </button>
               </div>
             </div>
@@ -507,7 +521,7 @@ function ProductDetailsPage(props: { item: Item }) {
                   setNewName(e.target.value);
                 }}
                 className="form-control"
-                defaultValue={props.item.productName.toUpperCase()}
+                defaultValue={props.item.productName}
               ></input>
             )}
           </div>

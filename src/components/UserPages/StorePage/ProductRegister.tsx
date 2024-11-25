@@ -117,6 +117,8 @@ function ProductRegister() {
     }
 
     if (catId != null) {
+        console.log(StockQTY);
+        
       let newProduct: NewProduct = new NewProduct(
         Name,
         Desc,

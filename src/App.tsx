@@ -14,12 +14,16 @@ import AdminLogin from "./pages/AdminPages/LoginPage/AdminLogin";
 import DashBoardPage from "./pages/AdminPages/Dashboard/DashBoardPage";
 import ProductRegister from "./components/UserPages/StorePage/ProductRegister";
 import MainCategoryPage from "./pages/UserPages/MainCategoryPage/MainCategoryPage";
+import AdminRegister from "./pages/AdminPages/AdminRegister/AdminRegister";
+import ManageOrderPage from "./pages/AdminPages/Dashboard/MangeOrders/ManageOrderPage";
+import ViewOrderPage from "./pages/AdminPages/Dashboard/MangeOrders/ViewOrderPage";
 
 function App() {
   useEffect(() => {
-    AOS.init({ // Animation duration
+    AOS.init({
+      // Animation duration
       once: false, // Allow animation to re-trigger when exiting and re-entering
-      mirror: true,   // Adjust the offset as needed
+      mirror: true, // Adjust the offset as needed
       offset: 0,
       duration: 1000,
     });
@@ -49,6 +53,9 @@ function App() {
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<DashBoardPage />} />
           <Route path="/admin/product/register" element={<ProductRegister />} />
+          <Route path="/admin/dashboard/admin" element={<AdminRegister />} />
+          <Route path="/admin/dashboard/order" element={<ManageOrderPage />} />
+          <Route path="admin/order/:orderID" element={<ViewOrderPage />} />
           <Route
             path="/category/:mainCategory"
             element={<MainCategoryPage />}

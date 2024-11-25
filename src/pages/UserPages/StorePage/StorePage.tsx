@@ -4,9 +4,11 @@ import NavigationBar from "../../../components/UserPages/NavigationBar/Navigatio
 import StoreFilterMenu from "../../../components/UserPages/StorePage/StoreFilterMenu";
 function StorePage(props: { isProduct: boolean }) {
   const [role, setRole] = useState<string | null>(null);
+
   useEffect(() => {
     setRole(getCookieByName("role"));
   }, [role]);
+  
   function getCookieByName(name: string) {
     const cookies = document.cookie.split(";");
     for (let i = 0; i < cookies.length; i++) {

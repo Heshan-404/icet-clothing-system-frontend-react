@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import NoItemsPreview from "./NoItemsPreview";
 
 function StoreItemContainer(props: { filter: string }) {
-  const [itemsList, setItems] = useState<Array<Item>>();
+  const [itemsList, setItems] = useState<Array<Item> | null>(null);
   const { catId } = useParams();
   useEffect(() => {
     if (catId) {
@@ -21,15 +21,16 @@ function StoreItemContainer(props: { filter: string }) {
       axiosClient.get("/product/".concat(props.filter)).then((response) => {
         setItems(response.data);
       });
-    } 
+    }
   }, [props.filter]);
   return (
-    <div className=""> 
+    <div className="">
+      
       {itemsList?.length == 0 && (
-          <div>
-            <NoItemsPreview />
-          </div>
-        )}
+        <div>
+          <NoItemsPreview />
+        </div>
+      )}
       <div className="d-flex flex-wrap w-100 d-flex ">
         {itemsList != null &&
           itemsList.map((item, index) => (

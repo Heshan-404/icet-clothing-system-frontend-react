@@ -5,32 +5,32 @@
   -moz-transition: 1.3s;
   -ms-transition: 1.3s;
   -o-transition: 1.3s;
-  border-image: linear-gradient(to bottom, #ededf6 0%, black 100%) 1;
-  border-radius: 5px;
-  /*thisdoesn'twork*/
-  border-style: solid;
+  /*thisdoesn'twork*/ 
   padding: 5px;
   animation-name: fadein;
-  animation-duration: 1s;
+  animation-duration: 1s; 
 }
 .product-desc {
   font-size: 15px;
 }
+#preview {
+  background-color: #FBFBFB;
+}
 .store-img-container {
   padding: 0;
   margin: 0;
-  display: flex;
-  align-items: end;
-  background-color: #ededf6;
   width: 100%;
-}
-.store-item-container:hover .store-img-container {
-  background-color: white;
+  height: 100%;
 }
 .store-item-container:hover {
-  background-image: linear-gradient(to bottom, #ededf6 0%, black 100%);
   cursor: pointer;
-  color: white;
+  scale: 1.03;
+  transition: .5s;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+  border: 1px solid black;
 }
 .store-item-img {
   width: 100%;
@@ -39,16 +39,15 @@
   background-repeat: no-repeat;
 }
 .store-item-description {
-  display: -webkit-box; 
+  display: -webkit-box;
   -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  line-height: 1.8em; 
-  max-height: 5.5em; 
-  opacity: .7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.8em;
+  max-height: 5.5em;
+  opacity: 0.7;
 }
-
 
 @keyframes fadein {
   from {
