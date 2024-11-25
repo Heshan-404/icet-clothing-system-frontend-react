@@ -70,19 +70,28 @@ function CartItemRow(props: { item: CartItem | undefined }) {
   return (
     <div className="w-100">
       {isItemVisible && (
-        <div className="cart-item-row-container">
+        <div className="cart-item-row-container ">
           <div className="d-flex justify-content-between align-items-center ">
-            <div className="cart-item-row-item-img-container rounded-4">
-              <div
-                className="cart-item-row-item-img"
-                style={{
-                  backgroundImage: imageData
-                    ? `url(data:image/png;base64,${imageData})`
-                    : "none",
-                }}
-              ></div>
+            <div className="cart-item-row-item-img-container p-0 m-0 rounded-4">
+              {imageData && (
+                <div
+                  className="cart-item-row-item-img"
+                  style={{
+                    backgroundImage: `url(data:image/png;base64,${imageData})`,
+                  }}
+                ></div>
+              )}
+              {!imageData && (
+                <div className="cart-item-row-item-img d-flex justify-content-center align-items-center ">
+                  <div
+                    className="spinner-border "
+                    style={{ width: "18px", height: "18px" }}
+                    role="status"
+                  ></div>
+                </div>
+              )}
             </div>
-            <div className="cart-item-row-item-data d-flex flex-column me-4 ">
+            <div className="cart-item-row-item-data d-flex flex-column ms-3 me-2">
               <div className="cart-item-row-item-data-name ">
                 {props.item?.productName}
               </div>
