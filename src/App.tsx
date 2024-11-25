@@ -43,6 +43,7 @@ function App() {
             element={<StorePage isProduct={false} />}
           />
           <Route path="/home" element={<HomePage />} />
+          <Route path="" element={<HomePage />} />
           <Route path="/user-login" element={<LoginPage />} />
           <Route path="/profile" element={<LogOutPage />} />
           <Route path="/order-success" element={<OrderSuccessAlert />} />
