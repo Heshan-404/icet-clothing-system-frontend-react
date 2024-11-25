@@ -5,7 +5,7 @@ import AlertComponent from "../../../UserPages/alerts/AlertComponent";
 
 function OrderTable() {
   const [orderList, setOrderList] = useState<OrderDetails[]>([]);
-  const [reload, setReload] = useState(true);
+ 
   const [showAlert, setShowAlert] = useState(false);
   const [alertMsg, setAlertMsg] = useState("");
 
@@ -118,7 +118,7 @@ function OrderTable() {
               </tr>
             </thead>
             <tbody>
-              {reload &&
+              {orderList &&
                 orderList.map((order) => (
                   <tr className={getRowClass(order.status)} key={order.id}>
                     <td scope="row">{order.id}</td>

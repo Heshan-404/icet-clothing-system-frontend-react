@@ -13,7 +13,6 @@ function CategoryGrid() {
     useState<Array<Category> | null>();
   const { mainCategory } = useParams();
   const [imageDataArray, setImageDataArray] = useState<String[] | null>(null);
-  const [showLoader, setShowLoader] = useState(true);
   const [role, setRole] = useState<string | null>(null);
   const [showCategoryAdd, setShowCategoryAdd] = useState(false);
   const [registerCategoryName, setRegisterCategoryName] = useState<string>("");
@@ -75,8 +74,7 @@ function CategoryGrid() {
   }
 
   useEffect(() => {
-    if (categoryDetails) {
-      setShowLoader(false);
+    if (categoryDetails) { 
       fetchImages();
     }
   }, [categoryDetails]);
