@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axiosClient from "../../../../axiosConfig";
 import ShopByCategoryItem from "../HomePage/ShopByCategoryItem";
-import femaleCategoryImg from "../../../assets/kidsCategory.png";
 import AlertComponent from "../alerts/AlertComponent";
 import DelayContainer from "../../DelayContainer";
 

@@ -9,7 +9,7 @@ import FooterComponent from "../Footer/FooterComponent";
 import DelayContainer from "../../DelayContainer";
 
 export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
-  const [filter, setFilter] = useState("all");
+  
   const { productId } = useParams<{ productId: string }>();
   const [item, setItem] = useState<Item | null>(null);
   const [maleCategoryList, setMaleCategoryList] = useState<Category[]>([]);
@@ -46,13 +46,7 @@ export default function StoreFilterMenu({ isProduct }: { isProduct: boolean }) {
   useEffect(() => {
     fetchCategoryList();
   }, []);
-
-  useEffect(() => {
-    if (item) {
-      console.log(item.categoryId);
-      setFilter("all/category".concat(item.categoryId + ``));
-    }
-  }, [item]);
+ 
 
   function fetchCategoryList() {
     axiosClient.get("/product/category/all/F").then((result) => {

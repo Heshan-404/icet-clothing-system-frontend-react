@@ -7,21 +7,10 @@ function ViewOrderPage() {
   const { orderID } = useParams();
   const [order, setOrder] = useState<OrderDetails>();
   const [productList, setProductList] = useState<Array<Item>>([]);
-   const [showAlert, setShowAlert] = useState(false);
-  const [alertMsg, setAlertMsg] = useState("");
-
-  function showAlertMsg(msg: string) {
-    setAlertMsg(msg);
-    setShowAlert(true);
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
-  }
 
   useEffect(() => {
     fetchOrderDetailsByID();
   }, []);
-  
 
   function fetchOrderProducts() {
     if (order) {
@@ -43,7 +32,7 @@ function ViewOrderPage() {
     sizeId: number
   ) {
     const productExists = productList.some(
-      (product) => product.productId+"" === id
+      (product) => product.productId + "" === id
     );
     if (!productExists) {
       await axiosClient
@@ -86,8 +75,7 @@ function ViewOrderPage() {
         }
       )
       .then((res) => {
-        console.log(res);
-        showAlertMsg("Order Completed");
+        console.log(res); 
       });
   }
 
